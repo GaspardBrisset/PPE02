@@ -163,9 +163,9 @@ INSERT INTO CommandeBoisson(idCommande, idBoisson ) VALUES
 INSERT INTO CommandeTacos(idCommande, idTacos) VALUES
 (1,1),
 (1,2),
+(2,2),
 (2,3),
-(2,4),
-(3,5);
+(3,1);
 
 INSERT INTO TacosViande(idTacos, idViande) VALUES
 (1,3),
@@ -173,17 +173,14 @@ INSERT INTO TacosViande(idTacos, idViande) VALUES
 (2,2),
 (3,2),
 (3,5),
-(4,4),
-(4,6),
-(4,7),
-(5,3);
+(3,5),
+(1,5);
+
 
 INSERT INTO TacosSauce(idTacos, idSauce) VALUES
-(1,3),
+(1,2),
 (2,4),
-(2,5),
-(3,7),
-(3,8),
-(4,1),
-(4,2),
-(5,3);
+(2,3),
+(3,4),
+(3,1),
+(1,5);
