@@ -113,10 +113,10 @@ INSERT INTO Client (nom, prenom, email, telephone, adresse) VALUES
 ('COEURDELION', 'Arthur', 'ArthurCDL@gmail.com', 0600000000, '14 impasse du carrefour'),
 ('QUIPIQUE', 'Francois', 'QuipiqueFrancois@gmail.com', 0699999999, '17 rue Victor Hugo');
 
-INSERT INTO Commande(prixCommande, dateCommande) VALUES
-(14, '2019-12-11'),
-(17, '2020-01-10'),
-(11, '2020-07-09');
+INSERT INTO Commande(prixCommande, dateCommande, idClient) VALUES
+(14, '2019-12-11',1),
+(17, '2020-01-10',2),
+(11, '2020-07-09',3);
 
 INSERT INTO Boisson(nomBoisson, prixBoisson) VALUES
 ('Coca-Cola 33cl', 1),
@@ -175,7 +175,6 @@ INSERT INTO TacosViande(idTacos, idViande) VALUES
 (3,5),
 (3,5),
 (1,5);
-
 
 INSERT INTO TacosSauce(idTacos, idSauce) VALUES
 (1,2),
