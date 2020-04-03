@@ -173,7 +173,7 @@ INSERT INTO TacosViande(idTacos, idViande) VALUES
 (2,2),
 (3,2),
 (3,5),
-(3,5),
+(3,3),
 (1,5);
 
 INSERT INTO TacosSauce(idTacos, idSauce) VALUES
