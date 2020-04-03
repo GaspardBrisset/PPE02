@@ -33,6 +33,10 @@
                 {
                     $page = $_GET['page'];
                 }
+                else 
+                {
+                    $page = "presentationTacos";
+                }
 
                 switch($page)
                 {

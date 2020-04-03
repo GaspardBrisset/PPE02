@@ -107,3 +107,80 @@ ALTER TABLE TacosSauce
 ADD CONSTRAINT TacosSauce_idSauce
 FOREIGN KEY (idSauce)
 REFERENCES Sauce(idSauce);
+
+INSERT INTO Client (nom, prenom, email, telephone, adresse) VALUES 
+('JEAN', 'Jean', 'JeanJean@gmail.com', 0607080910, '8 rue des peupliers'),
+('COEURDELION', 'Arthur', 'ArthurCDL@gmail.com', 0600000000, '14 impasse du carrefour'),
+('QUIPIQUE', 'Francois', 'QuipiqueFrancois@gmail.com', 0699999999, '17 rue Victor Hugo');
+
+INSERT INTO Commande(prixCommande, dateCommande, idClient) VALUES
+(14, '2019-12-11', 1),
+(17, '2020-01-10', 2),
+(11, '2020-07-09', 3);
+
+INSERT INTO Boisson(nomBoisson, prixBoisson) VALUES
+('Coca-Cola 33cl', 1),
+('Coca-Cola Zero 33cl', 1),
+('Coca-Cola cherry 33cl', 1),
+('Fanta 33cl', 1),
+('IceTea 33cl', 1),
+('Oasis 33cl', 1);
+
+
+INSERT INTO Tacos(tailleTacos, prixTacos) VALUES
+('M', 5),
+('L', 7),
+('XL', 9);
+
+INSERT INTO  Viande(nomViande) VALUES
+('Bacon'),
+('Steak'),
+('Escalope'),
+('Poulet marine'),
+('Kebab'),
+('Cordon Bleu'),
+('Nuggets'),
+('Merguez'),
+('Tenders');
+
+INSERT INTO Sauce(nomSauce) VALUES
+('Curry'),
+('Barbecue'),
+('Blanche'),
+('Mayonnaise'),
+('Burger'),
+('Samurai'),
+('Ketchup'),
+('Harissa');
+
+INSERT INTO CommandeBoisson(idCommande, idBoisson) VALUES
+(1,1),
+(1,3),
+(2,5),
+(3,1),
+(3,6);
+
+INSERT INTO CommandeTacos(idCommande, idTacos) VALUES
+(1,1),
+(1,2),
+(2,2),
+(2,3),
+(3,1);
+
+INSERT INTO TacosViande(idTacos, idViande) VALUES
+(1,3),
+(2,1),
+(2,2),
+(3,2),
+(3,5),
+(3,5),
+(1,5);
+
+
+INSERT INTO TacosSauce(idTacos, idSauce) VALUES
+(1,2),
+(2,4),
+(2,3),
+(3,4),
+(3,1),
+(1,5);
