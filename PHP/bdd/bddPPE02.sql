@@ -24,6 +24,7 @@ PRIMARY KEY(idCommande));
 CREATE TABLE IF NOT EXISTS CommandeBoisson(
 idCommande INT,
 idBoisson INT,
+quantite INT,
 PRIMARY KEY(idCommande, idBoisson));
 
 CREATE TABLE IF NOT EXISTS Boisson(
@@ -39,13 +40,19 @@ PRIMARY KEY(idCommande, idTacos));
 
 CREATE TABLE IF NOT EXISTS Tacos(
 idTacos INT AUTO_INCREMENT,
-tailleTacos VARCHAR(64),
-prixTacos FLOAT,
+idTypeTacos INT,
 PRIMARY KEY(idTacos));
+
+CREATE TABLE IF NOT EXISTS TypeTacos(
+idTypeTacos INT AUTO_INCREMENT,
+taille VARCHAR(64),
+prixTaille FLOAT,
+PRIMARY KEY(idTypeTacos));
 
 CREATE TABLE IF NOT EXISTS TacosViande(
 idTacos INT,
 idViande INT,
+quantite INT,
 PRIMARY KEY(idTacos, idViande));
 
 CREATE TABLE IF NOT EXISTS Viande(
@@ -56,6 +63,7 @@ PRIMARY KEY(idViande));
 CREATE TABLE IF NOT EXISTS TacosSauce(
 idTacos INT,
 idSauce INT,
+quantite INT,
 PRIMARY KEY(idTacos, idSauce));
 
 CREATE TABLE IF NOT EXISTS Sauce(
@@ -87,6 +95,11 @@ ALTER TABLE CommandeTacos
 ADD CONSTRAINT CommandeTacos_idTacos
 FOREIGN KEY (idTacos)
 REFERENCES Tacos(idTacos);
+
+ALTER TABLE Tacos
+ADD CONSTRAINT Tacos_idTypeTacos
+FOREIGN KEY (idTypeTacos)
+REFERENCES TypeTacos(idTypeTacos);
 
 ALTER TABLE TacosViande
 ADD CONSTRAINT TacosViande_idTacos
@@ -126,8 +139,7 @@ INSERT INTO Boisson(nomBoisson, prixBoisson) VALUES
 ('IceTea 33cl', 1),
 ('Oasis 33cl', 1);
 
-
-INSERT INTO Tacos(tailleTacos, prixTacos) VALUES
+INSERT INTO TypeTacos(taille, prixTaille) VALUES
 ('M', 5),
 ('L', 7),
 ('XL', 9);
@@ -153,34 +165,36 @@ INSERT INTO Sauce(nomSauce) VALUES
 ('Ketchup'),
 ('Harissa');
 
-INSERT INTO CommandeBoisson(idCommande, idBoisson) VALUES
+INSERT INTO Tacos(idTacos, idTypeTacos) VALUES
 (1,1),
-(1,3),
-(2,5),
-(3,1),
-(3,6);
+(2,3),
+(3,2),
+(4,1);
+
+INSERT INTO CommandeBoisson(idCommande, idBoisson, quantite) VALUES
+(1,5,1),
+(1,6,1),
+(2,3,2),
+(3,1,1);
 
 INSERT INTO CommandeTacos(idCommande, idTacos) VALUES
 (1,1),
 (1,2),
-(2,2),
 (2,3),
-(3,1);
+(3,4);
 
-INSERT INTO TacosViande(idTacos, idViande) VALUES
-(1,3),
-(2,1),
-(2,2),
-(3,2),
-(3,5),
-(3,5),
-(1,5);
+INSERT INTO TacosViande(idTacos, idViande, quantite) VALUES
+(1,4,1),
+(2,7,2),
+(2,2,1),
+(3,3,1),
+(3,6,1),
+(4,8,1);
 
 
-INSERT INTO TacosSauce(idTacos, idSauce) VALUES
-(1,2),
-(2,4),
-(2,3),
-(3,4),
-(3,1),
-(1,5);
+INSERT INTO TacosSauce(idTacos, idSauce, quantite) VALUES
+(1,5,1),
+(2,3,1),
+(2,8,1),
+(3,1,2),
+(4,7,1);
