@@ -1,10 +1,10 @@
 <?php
 
-    class ControllerPresentationTacos
+    class ControllerChoixTacos
     {
         public static function includeView()
         {
-            include_once("/pages/presentationTacos/presentationTacos.php");
+            include_once("/pages/choixTacos/choixTacos.php");
         }
         
         public static function redirectUser()
