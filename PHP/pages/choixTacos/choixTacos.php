@@ -2,7 +2,7 @@
     include_once("/DTO/Tacos.php");
     include_once("/DAO/TacosManager.php");
 
-    $tabTacos = TacosManager::findAllTacos();
+    $tabTacos = TypeTacosManager::findAllTacos();
     
     foreach($tabTacos as $tacos)
     {

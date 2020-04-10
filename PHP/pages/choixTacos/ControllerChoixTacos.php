@@ -7,9 +7,14 @@
             include_once("/pages/choixTacos/choixTacos.php");
         }
         
-        public static function redirectUser()
+        public static function getTypeTacos()
         {
-            header('Location: index.php?page=choixTacos');
+            
+        }
+        
+        public static function redirectViande()
+        {
+            header('Location: index.php?page=choixViande');
             exit;
         }
     }

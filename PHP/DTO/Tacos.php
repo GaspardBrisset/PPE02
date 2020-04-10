@@ -3,8 +3,7 @@
     class Tacos
     {
         private $idTacos;
-        private $tailleTacos;
-        private $prixTacos;
+        private $idTypeTacos;
         
         function getIdTacos() {
             return $this->idTacos;
@@ -14,21 +13,14 @@
             $this->idTacos = $idTacos;
         }
         
-        function getTailleTacos() {
-            return $this->tailleTacos;
+        function getIdTypeTacos() {
+            return $this->idTypeTacos;
         }
 
-        function setTailleTacos($tailleTacos) {
-            $this->tailleTacos = $tailleTacos;
+        function setIdTypeTacos($idTypeTacos) {
+            $this->idTypeTacos = $idTypeTacos;
         }
         
-        function getPrixTacos() {
-            return $this->prixTacos;
-        }
-
-        function setPrixTacos($prixTacos) {
-            $this->prixTacos = $prixTacos;
-        }
     }
     
 ?>

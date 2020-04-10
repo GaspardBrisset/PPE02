@@ -23,8 +23,7 @@
                 $tacos = new Tacos(); 
                 
                 $tacos->setIdTacos($result["idTacos"]);
-                $tacos->setTailleTacos($result["tailleTacos"]);
-                $tacos->setPrixTacos($result["prixTacos"]);
+                $tacos->setIdTypeTacos($result["idTypeTacos"]);
             }
             
             return $tacos;
@@ -54,13 +53,13 @@
         {
             $connex = DatabaseLinker::getConnexion();
                     
-            $state=$connex->prepare("INSERT INTO Tacos(tailleTacos, prixTacos) VALUES (?, ?)");
+            $state=$connex->prepare("INSERT INTO Tacos(idTacos, idTypeTacos) VALUES (?, ?)");
             
-            $tailleTacos = $tacos->getTailleTacos();
-            $prixTacos = $tacos->getPrixTacos();
+            $idTacos = $tacos->getIdTacos();
+            $idTypeTacos = $tacos->getIdTypeTacos();
             
-            $state->bindParam(1,$tailleTacos);
-            $state->bindParam(2,$prixTacos);
+            $state->bindParam(1,$idTacos);
+            $state->bindParam(2,$idTypeTacos);
             
             $state->execute();           
         }

@@ -2,7 +2,7 @@
 
     if (empty($_SESSION))
     {
-        session_name("avis_recherche");
+        session_name("commande_tacos");
         session_start();
     }
 ?>
@@ -35,19 +35,48 @@
                 }
                 else 
                 {
-                    $page = "presentationTacos";
+                    $page = "accueil";
                 }
 
                 switch($page)
                 {
-                    case "presentationTacos" : 
+                    case "accueil" : 
 
-                        include_once("pages/presentationTacos/ControllerPresentationTacos.php");
+                        include_once("pages/accueil/ControllerAccueil.php");
 
-                        $controlPresentationTacos = new ControllerPresentationTacos();
-                        $controlPresentationTacos->includeView();
+                        $controlAccueil = new ControllerAccueil();
+                        $controlAccueil->includeView();
                         break;
+                    
+                    case "contact" :
+                        
+                        break;
+                    
+                    case "choixTacos" :
+                        
+                        include_once("pages/accueil/ControllerChoixTacos.php");
 
+                        $controlChoixTacos = new ControllerChoixTacos();
+                        $controlChoixTacos->includeView();
+                        
+                        break;
+                    
+                    case "choixViande" :
+                        
+                        break;
+                    
+                    case "choixSauce" :
+                        
+                        break;
+                    
+                    case "choixBoisson" :
+                        
+                        break;
+                    
+                    case "panier" :
+                        
+                        break;
+                    
                     default: 
                         break;
                 }
