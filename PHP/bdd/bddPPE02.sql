@@ -165,11 +165,11 @@ INSERT INTO Sauce(nomSauce) VALUES
 ('Ketchup'),
 ('Harissa');
 
-INSERT INTO Tacos(idTacos, idTypeTacos) VALUES
-(1,1),
-(2,3),
-(3,2),
-(4,1);
+INSERT INTO Tacos(idTypeTacos) VALUES
+(1),
+(3),
+(2),
+(1);
 
 INSERT INTO CommandeBoisson(idCommande, idBoisson, quantite) VALUES
 (1,5,1),
