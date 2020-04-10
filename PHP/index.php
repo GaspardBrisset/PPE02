@@ -42,14 +42,14 @@
                 {
                     case "presentationTacos" : 
 
-                            include_once("pages/presentationTacos/ControllerPresentationTacos.php");
+                        include_once("pages/presentationTacos/ControllerPresentationTacos.php");
 
-                            $instanceController = new ControllerPresentationTacos();
-                            $instanceController->includeView();
-                            break;
+                        $controlPresentationTacos = new ControllerPresentationTacos();
+                        $controlPresentationTacos->includeView();
+                        break;
 
                     default: 
-                            break;
+                        break;
                 }
 
 ?>		
