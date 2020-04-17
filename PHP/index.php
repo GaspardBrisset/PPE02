@@ -54,7 +54,7 @@
                     
                     case "choixTacos" :
                         
-                        include_once("pages/accueil/ControllerChoixTacos.php");
+                        include_once("pages/choixTacos/ControllerChoixTacos.php");
 
                         $controlChoixTacos = new ControllerChoixTacos();
                         $controlChoixTacos->includeView();
@@ -62,6 +62,11 @@
                         break;
                     
                     case "choixViande" :
+                        
+                        include_once("pages/choixViande/ControllerChoixViande.php");
+                        
+                        $controlChoixViande = new ControllerChoixViande();
+                        $controlChoixViande->includeView();
                         
                         break;
                     

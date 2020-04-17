@@ -1,13 +1,59 @@
 <?php
-    include_once("/DTO/Tacos.php");
-    include_once("/DAO/TacosManager.php");
+    include_once("/DTO/TypeTacos.php");
+    include_once("/DAO/TypeTacosManager.php");
 
-    $tabTacos = TypeTacosManager::findAllTacos();
+    $tabTypeTacos = ControllerChoixTacos::getTypesTacos();
     
-    foreach($tabTacos as $tacos)
+?>
+<table>
+    
+    <tr>
+        <th>Taille</th>
+        <th>Viandes</th>
+        <th>Sauces</th>
+        <th>Prix</th>
+    </tr>
+    
+<?php
+
+    foreach($tabTypeTacos as $typeTacos)
     {
-        echo $tacos->getTailleTacos();
-        echo $tacos->getPrixTacos();
+?>
+        <tr>
+<?php
+        echo "<td>".$typeTacos->getTaille()."</td>";
+        
+        if($typeTacos->getTaille()=="M")
+        {
+            echo "<td> 1 </td>";
+            echo "<td> 1 </td>";
+        }
+        else if($typeTacos->getTaille()=="L")
+        {
+            echo "<td> 2 </td>";
+            echo "<td> 2 </td>";
+        }
+        else if($typeTacos->getTaille()=="XL")
+        {
+            echo "<td> 3 </td>";
+            echo "<td> 2 </td>";
+        }
+        
+        echo "<td>".$typeTacos->getPrixTaille()."€ </td>";
+?>
+        </tr>
+<?php
     }
     
 ?>
+</table>
+
+<form method="POST" action="index.php?page=choixViande">
+    <input type="radio" name="button-choix-taille" id="taille1" value="1"/>
+    <label for="taille1">M</label>
+    <input type="radio" name="button-choix-taille" id="taille2" value="2"/>
+    <label for="taille2">L</label>
+    <input type="radio" name="button-choix-taille" id="taille3" value="3"/>
+    <label for="taille3">XL</label>
+    <input type="submit" value="Valider"/>
+</form>
