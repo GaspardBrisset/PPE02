@@ -17,8 +17,8 @@
             <input type="radio" name="button-choix-viande" id="viande3" value="3"/>
             <label for="viande3">Escalope</label>
             
-            <input type="radio" name="button-choix-viande" id="viande0" value="0"/>
-            <label for="viande0">Bacon</label>
+            <input type="radio" name="button-choix-viande" id="viande4" value="0"/>
+            <label for="viande4">Bacon</label>
             
             <input type="submit" value="Valider"/>
         </form>
