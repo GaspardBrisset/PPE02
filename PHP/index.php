@@ -1,10 +1,11 @@
 <?php 
 
-    if (empty($_SESSION))
+    if(empty($_SESSION))
     {
         session_name("commande_tacos");
         session_start();
     }
+    
 ?>
 
 
@@ -46,6 +47,7 @@
 
                         $controlAccueil = new ControllerAccueil();
                         $controlAccueil->includeView();
+                        
                         break;
                     
                     case "contact" :
@@ -71,6 +73,11 @@
                         break;
                     
                     case "choixSauce" :
+                        
+                        include_once("pages/choixSauce/ControllerChoixSauce.php");
+                        
+                        $controlChoixSauce = new ControllerChoixSauce();
+                        $controlChoixSauce->includeView();
                         
                         break;
                     

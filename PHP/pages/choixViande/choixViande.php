@@ -2,14 +2,14 @@
     /*session_unset();
     session_destroy();*/
 
-    $tailleTacos = ControllerChoixViande::tailleTacosSession(); //voir controller pour vérifier
+    $tailleTacos = ControllerChoixViande::tailleTacosSession();
     
     
-    if(!empty($tailleTacos))
+    if(!empty($tailleTacos) && !isset($_POST["button-choix-viande1"]))
     {
         $tabViandes=ControllerChoixViande::getViandes();
 ?>
-        <form method="POST" action="index.php?page=choixSauce">
+        <form method="POST" action="index.php?page=choixViande">
 <?php
 
             if($tailleTacos>=1)
@@ -76,6 +76,12 @@
             <input type="submit" value="Valider"/>
         </form>
 <?php
+    }
+    
+    if(isset($_POST["button-choix-viande1"]))
+    {
+        ControllerChoixViande::ViandesSession();
+        ControllerChoixViande::redirectSauce();
     }
     
     
