@@ -22,6 +22,7 @@
                 $result = $resultats[0];
                 $viande = new Viande(); 
                 
+                $viande->setIdViande($result["idViande"]);
                 $viande->setNomViande($result["nomViande"]);
             }
             

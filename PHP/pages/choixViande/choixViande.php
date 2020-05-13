@@ -2,6 +2,9 @@
     /*session_unset();
     session_destroy();*/
 
+    include_once("/DTO/Viande.php");
+    include_once("/DAO/ViandeManager.php");
+
     $tailleTacos = ControllerChoixViande::tailleTacosSession();
     
     
@@ -11,10 +14,9 @@
 ?>
         <form method="POST" action="index.php?page=choixViande">
 <?php
-
             if($tailleTacos>=1)
             {
-                //idTypeTacos=1 => taille=M => 1 viande => 1 ligne de boutons radio
+                //idTypeTacos=2 => taille=L => 2 viandes => 2 lignes de boutons radio
                 echo "Choix viande n°1: "."<br>";
                 foreach($tabViandes as $viande)
                 {
@@ -30,7 +32,7 @@
                 } 
                 echo "<br>";
             }
-            
+
             if($tailleTacos>=2)
             {
                 //idTypeTacos=2 => taille=L => 2 viandes => 2 lignes de boutons radio
@@ -68,6 +70,8 @@
                 } 
                 echo "<br>";
             }
+            
+            
 ?>
             
             <!--<input type="radio" name="button-choix-viande" id="viande2" value="2"/>
@@ -78,9 +82,11 @@
 <?php
     }
     
-    if(isset($_POST["button-choix-viande1"]))
+    //test
+    //echo ControllerChoixViande::ViandesSession();
+    
+    if(ControllerChoixViande::ViandesSession()==true)
     {
-        ControllerChoixViande::ViandesSession();
         ControllerChoixViande::redirectSauce();
     }
     

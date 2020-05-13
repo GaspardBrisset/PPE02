@@ -22,6 +22,7 @@
                 $result = $resultats[0];
                 $sauce = new Sauce(); 
                 
+                $sauce->setIdSauce($result["idSauce"]);
                 $sauce->setNomSauce($result["nomSauce"]);
             }
             
