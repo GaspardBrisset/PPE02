@@ -87,6 +87,11 @@
                     
                     case "panier" :
                         
+                        include_once("pages/panier/ControllerPanier.php");
+                        
+                        $controlPanier = new ControllerPanier();
+                        $controlPanier->includeView();
+                        
                         break;
                     
                     default: 

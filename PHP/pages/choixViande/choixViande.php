@@ -5,8 +5,8 @@
     include_once("/DTO/Viande.php");
     include_once("/DAO/ViandeManager.php");
 
-    $tailleTacos = ControllerChoixViande::tailleTacosSession();
-    
+    //echo $_SESSION["idTypeTacos"];
+    $tailleTacos = $_SESSION["idTypeTacos"];
     
     if(!empty($tailleTacos) && !isset($_POST["button-choix-viande1"]))
     {
@@ -82,8 +82,6 @@
 <?php
     }
     
-    //test
-    //echo ControllerChoixViande::ViandesSession();
     
     if(ControllerChoixViande::ViandesSession()==true)
     {

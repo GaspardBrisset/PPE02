@@ -1,28 +1,31 @@
 <?php
-    /*$idViande1 = ControllerChoixSauce::Viande1Session();
-    $idViande2 = ControllerChoixSauce::Viande2Session();
-    $idViande3 = ControllerChoixSauce::Viande3Session();
     
+    echo "Session idTypeTacos: ".$_SESSION["idTypeTacos"]."<br>";
+    $idTypeTacos = $_SESSION["idTypeTacos"];
+    echo "Session idViande1: ".$_SESSION["idViande1"]."<br>"; 
+    $idViande1 = $_SESSION["idViande1"];
     
-    print_r($idViande1);
-    echo $idViande2;
-    echo $idViande3;
-    //echo $_POST["button-choix-viande1"];*/
-    
-    if(!empty($_SESSION["idViande1"])) //PROBLEME ICI REVOIR CONTROLLERCHOIXVIANDE
+    if(isset($_SESSION["idViande2"]))
     {
-        echo $_SESSION["idTypeTacos"];
+        echo "Session idViande2: ".$_SESSION["idViande2"]."<br>";
+        $idViande2 = $_SESSION["idViande2"];
     }
     
+    if(isset($_SESSION["idViande3"]))
+    {
+        echo "Session idViande3: ".$_SESSION["idViande3"]."<br>";
+        $idViande3 = $_SESSION["idViande3"];
+    }
     
-    if(!empty($idViande1) && !empty($_SESSION["idTypeTacos"]) && isset($idViande2) && isset($idViande3))
+
+    if(!empty($idViande1) && !empty($idTypeTacos) && !isset($_POST["button-choix-sauce1"]))
     {
         $tabSauces=ControllerChoixSauce::getSauces();
 ?>
-        <form method="POST" action="index.php?page=choixBoisson">
+        <form method="POST" action="index.php?page=choixSauce">
             
 <?php
-            if($_SESSION["idTypeTacos"]>=1)
+            if($idTypeTacos>=1)
             {
                 //idTypeTacos=1 => taille=M => 1 sauce => 1 ligne de boutons radio
                 echo "Choix sauce n°1: "."<br>";
@@ -41,7 +44,7 @@
                 echo "<br>";
             }
             
-            if($_SESSION["idTypeTacos"]>=2)
+            if($idTypeTacos>=2)
             {
                 //idTypeTacos=2 ou 3 => taille=L ou XL => 2 sauces => 2 lignes de boutons radio
                 echo "Choix sauce n°2: "."<br>";
@@ -63,5 +66,10 @@
             <input type="submit" value="Valider"/>
         </form>
 <?php
+    }
+    
+    if(ControllerChoixSauce::SaucesSession()==true)
+    {
+        ControllerChoixSauce::redirectPanier();
     }
 ?>

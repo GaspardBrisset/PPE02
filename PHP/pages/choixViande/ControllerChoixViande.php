@@ -21,24 +21,9 @@
             exit;
         }
         
-        public static function tailleTacosSession() //faire pareil que pour ViandesSession ? => ControllerChoixTacos
-        {   
-            $idTypeTacos = null;
-            
-            unset($_SESSION["idTypeTacos"]);
-            
-            if(!empty($_POST["button-choix-taille"])) // ou isset
-            {
-                $idTypeTacos = $_POST["button-choix-taille"];
-                $_SESSION["idTypeTacos"] = $idTypeTacos;
-            }
-            
-            return $idTypeTacos;
-        }
-        
         public static function ViandesSession()
         {
-            //prof : mettre en session les 3 viandes dans un tableau
+            //prof : mettre en session un tableau avec les 3 viandes
             
             $idViande1 = null;
             $idViande2 = null;
