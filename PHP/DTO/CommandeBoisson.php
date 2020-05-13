@@ -4,6 +4,7 @@
     {
         private $idCommande;
         private $idBoisson;
+        private $quantite;
 
         function getIdCommande() {
             return $this->idCommande;
@@ -20,6 +21,16 @@
         function setIdBoisson($idBoisson) {
             $this->idBoisson = $idBoisson;
         }
+        
+        function getQuantite() {
+            return $this->quantite;
+        }
+
+        function setQuantite($quantite) {
+            $this->quantite = $quantite;
+        }
+
+
     }
 ?>
         

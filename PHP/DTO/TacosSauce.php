@@ -4,6 +4,7 @@
     {
         private $idTacos;
         private $idSauce;
+        private $quantite;
         
         function getIdTacos() {
             return $this->idTacos;
@@ -20,6 +21,15 @@
         function setIdSauce($idSauce) {
             $this->idSauce = $idSauce;
         }
+
+        function getQuantite() {
+            return $this->quantite;
+        }
+
+        function setQuantite($quantite) {
+            $this->quantite = $quantite;
+        }
+
 
     }
 ?>
