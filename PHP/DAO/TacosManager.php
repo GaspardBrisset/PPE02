@@ -35,7 +35,7 @@
             
             $connex = DatabaseLinker::getConnexion();
             
-            $state = $connex->prepare("SELECT idTacos FROM Tacos");
+            $state = $connex->prepare("SELECT idTacos FROM Tacos ORDER BY idTacos");
             $state->execute();
             
             $resultats = $state->fetchAll();
@@ -53,13 +53,11 @@
         {
             $connex = DatabaseLinker::getConnexion();
                     
-            $state=$connex->prepare("INSERT INTO Tacos(idTacos, idTypeTacos) VALUES (?, ?)");
+            $state=$connex->prepare("INSERT INTO Tacos(idTypeTacos) VALUES (?)");
             
-            $idTacos = $tacos->getIdTacos();
             $idTypeTacos = $tacos->getIdTypeTacos();
             
-            $state->bindParam(1,$idTacos);
-            $state->bindParam(2,$idTypeTacos);
+            $state->bindParam(1,$idTypeTacos);
             
             $state->execute();           
         }
@@ -73,5 +71,28 @@
             $state->bindParam(1,$idTacos);
             
             $state->execute();
+        }
+        
+        public static function findLastTacos()
+        {
+            $connex = DatabaseLinker::getConnexion();
+            $tacos = null;
+            
+            $state = $connex->prepare("SELECT * FROM Tacos WHERE idTacos =(SELECT MAX(idTacos) FROM Tacos)");
+            
+            $state->execute();
+                        
+            $resultats = $state->fetchAll();
+                    
+            if(sizeof($resultats)>0)
+            {
+                $result = $resultats[0];
+                $tacos = new Tacos(); 
+                
+                $tacos->setIdTacos($result["idTacos"]);
+                $tacos->setIdTypeTacos($result["idTypeTacos"]);
+            }
+            
+            return $tacos;
         }
     }
