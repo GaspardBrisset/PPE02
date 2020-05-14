@@ -172,11 +172,11 @@
             $quantiteSauce1 = 0;
             $quantiteSauce2 = 0;
             
-            if($tacos->getIdTypeTacos()==1) //Taille M, 1 viande
+            if($tacos->getIdTypeTacos()==1)
             {
                 $quantiteSauce1 = 1;
             }
-            else if($tacos->getIdTypeTacos()==2 || $tacos->getIdTypeTacos()==3) //Taille L, 2 viandes
+            else if($tacos->getIdTypeTacos()==2 || $tacos->getIdTypeTacos()==3)
             {
                 if($sauce1->getIdSauce()==$sauce2->getIdSauce())
                 {

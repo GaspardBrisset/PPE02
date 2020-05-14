@@ -13,7 +13,7 @@
             $state=$connex->prepare("INSERT INTO TacosSauce(idTacos, idSauce, quantite) VALUES (?, ?, ?)");
 
             $idTacos = $tacosSauce->getIdTacos();
-            $idViande = $tacosSauce->getIdSauce();
+            $idSauce = $tacosSauce->getIdSauce();
             $quantite = $tacosSauce->getQuantite();
 
             $state->bindParam(1,$idTacos);

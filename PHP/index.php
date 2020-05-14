@@ -83,6 +83,11 @@
                     
                     case "choixBoisson" :
                         
+                        include_once("pages/choixBoisson/ControllerChoixBoisson.php");
+                        
+                        $controlChoixBoisson = new ControllerChoixBoisson();
+                        $controlChoixBoisson->includeView();
+                        
                         break;
                     
                     case "panier" :
