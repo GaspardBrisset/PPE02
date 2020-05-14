@@ -1,0 +1,32 @@
+.page
+{
+   background-color: #F0B27A ; 
+}
+.titrePage
+{
+  display:flex;  
+  font-weight: 900;
+  justify-content: center;   
+  font: 1.6em "Optima", sans-serif;
+  
+}
+.description
+{
+    font: 1.2em "Optima", sans-serif;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    min-height:500px;
+    background-color: #F0B27A;
+    margin: 10px;
+    padding: 10px;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-right-width: 1px;
+    border-right-style: solid;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-left-width: 1px;
+    border-left-style: solid;
+}
+
