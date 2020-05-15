@@ -20,7 +20,7 @@
             if(sizeof($resultats)>0)
             {
                 $result = $resultats[0];
-                $boisson = new Commande(); 
+                $boisson = new Boisson(); 
                 
                 $boisson->setIdBoisson($result["idBoisson"]);
                 $boisson->setNomBoisson($result["nomBoisson"]);
