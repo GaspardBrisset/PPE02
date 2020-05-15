@@ -6,9 +6,7 @@
         session_name("commande_tacos");
         session_start();
     }
-    
 ?>
-
 
 <!DOCTYPE html>
 <html lang="fr">

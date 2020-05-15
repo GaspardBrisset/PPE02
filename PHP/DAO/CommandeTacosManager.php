@@ -44,7 +44,7 @@
             return $tabTacos;
         }
         
-        public static function findCommande($idCommande)
+        public static function findCommandeTacosWithCommande($idCommande)
         {
             $connex = DatabaseLinker::getConnexion();
             $commandeTacos = null;

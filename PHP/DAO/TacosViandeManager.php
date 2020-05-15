@@ -46,7 +46,7 @@
             return $tabViandes;
         }
         
-        public static function findTacos($idTacos)
+        public static function findTacosViandeWithTacos($idTacos)
         {
             $connex = DatabaseLinker::getConnexion();
             $tacosViande = null;

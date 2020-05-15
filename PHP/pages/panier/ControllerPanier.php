@@ -41,14 +41,13 @@
             TacosManager::insertTacos($tacos);
             
             $tacos = TacosManager::findLastTacos();
+            
             return $tacos;
         }
         
         
         public static function insertCommandeTacos($idTacos)
         {
-            //$commande = new CommandeTacos();   
-            
             $commandeTacosIsSet = false;
             
             $tacos = TacosManager::findTacos($idTacos);

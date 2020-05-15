@@ -34,7 +34,7 @@
         ControllerPanier::insertCommandeTacos($idTacos); //Table CommandeTacos(idCommande, idTacos)
     }
     
-    
+    //inutile sert juste à vérifier l'insertion en affichant les infos
     if(isset($_SESSION["idViande1"]))
     {
         if(ControllerPanier::insertTacosViande($idTacos)==true) //séparer le renvoie true/false et l'insertion ??
@@ -52,7 +52,7 @@
         }
     }
 
-    
+    //inutile sert juste à vérifier l'insertion en affichant les infos
     if(isset($_SESSION["idSauce1"]))
     {
         if(ControllerPanier::insertTacosSauce($idTacos)==true) //séparer le renvoie true/false et l'insertion ??
@@ -70,9 +70,8 @@
         } 
     }
     
-    
-    
-    if(($tacosViandeIsSet && $tacosSauceIsSet)==true)
+
+    if(($tacosViandeIsSet && $tacosSauceIsSet)==true) 
     {
         unset($_SESSION["idTypeTacos"]);
         unset($_SESSION["idViande1"]);
