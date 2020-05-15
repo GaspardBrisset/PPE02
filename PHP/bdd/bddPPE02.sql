@@ -129,7 +129,7 @@ INSERT INTO Client (nom, prenom, email, telephone, adresse) VALUES
 INSERT INTO Commande(prixCommande, dateCommande, idClient) VALUES
 (14, '2019-12-11', 1),
 (17, '2020-01-10', 2),
-(11, '2020-07-09', 3);
+(11, '2020-04-09', 3);
 
 INSERT INTO Boisson(nomBoisson, prixBoisson) VALUES
 ('Coca-Cola 33cl', 1),

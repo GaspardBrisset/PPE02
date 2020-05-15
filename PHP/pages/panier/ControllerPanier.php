@@ -6,6 +6,8 @@
     include_once("/DAO/ViandeManager.php");
     include_once("/DAO/SauceManager.php");
     include_once("/DTO/Tacos.php");
+    include_once("/DTO/Commande.php");
+    include_once("/DAO/CommandeTacosManager.php");
 
     class ControllerPanier
     {
@@ -13,6 +15,22 @@
         {
             include_once("/pages/panier/panier.php");
         }
+        
+        
+        public static function newCommande()
+        {
+            $commande = new Commande();
+            
+            //$commande->setPrixCommande(10.4);
+            //$commande->setDateCommande("2000-01-01 01:50:34");
+            //$commande->setIdClient(5555);
+            CommandeManager::insertCommande($commande);
+            
+            $commande = CommandeManager::findLastCommande();
+            $_SESSION["idCommande"] = $commande->getIdCommande();
+            //return $commande;
+        }
+        
         
         public static function insertTacos($idTypeTacosSession)
         {
@@ -26,10 +44,41 @@
             return $tacos;
         }
         
-        public static function insertCommandeTacos()
+        
+        public static function insertCommandeTacos($idTacos)
+        {
+            //$commande = new CommandeTacos();   
+            
+            $commandeTacosIsSet = false;
+            
+            $tacos = TacosManager::findTacos($idTacos);
+            
+            $idCommande = $_SESSION["idCommande"];
+            $commande = CommandeManager::findCommande($idCommande);
+
+            
+            $commandeTacos = new CommandeTacos();
+            $commandeTacos->setIdCommande($idCommande);
+            $commandeTacos->setIdTacos($idTacos);
+            
+
+            CommandeTacosManager::insertCommandeTacos($commandeTacos);
+            
+            
+            if(sizeof(CommandeTacosManager::findTacosWithCommande($idCommande))>0)
+            {
+                $commandeTacosIsSet = true;
+            }
+            
+            return $commandeTacosIsSet;
+        }
+        
+        
+        public static function insertCommandeBoisson()
         {
             //$commande = new CommandeTacos();   
         }
+        
         
         public static function insertTacosViande($idTacos)
         {
@@ -218,6 +267,18 @@
         {
             $tabSauces = TacosSauceManager::findSaucesWithTacos($idTacosSauce);
             return $tabSauces;
+        }
+        
+        public static function getCommande($idCommande)
+        {
+            $commande = CommandeManager::findCommande($idCommande);
+            return $commande;
+        }
+        
+        public static function getTacosWithCommande($idCommande)
+        {
+            $tabTacos = CommandeTacosManager::findTacosWithCommande($idCommande);
+            return $tabTacos;
         }
     }
 ?>

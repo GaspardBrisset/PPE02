@@ -8,7 +8,7 @@
         echo $boisson->getNomBoisson();
 ?>
         <form method="POST" action="index.php?page=choixBoisson">
-            <SELECT name="liste-boisson" size="1">
+            <SELECT name='<?php echo "liste-boisson-quantite";?>' size="1">
 <?php
                 for($i=0;$i<=5;$i++)
                 {
@@ -18,6 +18,8 @@
                 }
 ?>
             </SELECT>
+            <input type="hidden" name="idBoisson" value="<?php echo $boisson->getIdBoisson();?>"/>
+            <input
             <input type="submit" value="Ajouter"/>
         </form>
 <?php

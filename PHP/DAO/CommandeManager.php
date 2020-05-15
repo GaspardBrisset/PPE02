@@ -78,4 +78,29 @@
             
             $state->execute();
         }
+        
+        public static function findLastCommande()
+        {
+            $connex = DatabaseLinker::getConnexion();
+            $commande = null;
+            
+            $state = $connex->prepare("SELECT * FROM Commande WHERE idCommande =(SELECT MAX(idCommande) FROM Commande)");
+            
+            $state->execute();
+                        
+            $resultats = $state->fetchAll();
+                    
+            if(sizeof($resultats)>0)
+            {
+                $result = $resultats[0];
+                $commande = new Commande(); 
+                
+                $commande->setIdCommande($result["idCommande"]);
+                $commande->setPrixCommande($result["prixCommande"]);
+                $commande->setDateCommande($result["dateCommande"]);
+                $commande->setIdClient($result["idClient"]);
+            }
+            
+            return $commande;
+        }
     }

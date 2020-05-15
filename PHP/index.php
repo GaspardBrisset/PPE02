@@ -1,5 +1,6 @@
 <?php 
-
+    //session_unset();
+    //session_destroy();
     if(empty($_SESSION))
     {
         session_name("commande_tacos");
@@ -44,7 +45,17 @@
                     case "accueil" : 
 
                         include_once("pages/accueil/ControllerAccueil.php");
-
+                        
+                        //A VIRER SI ON VEUX POUVOIR COMMANDER PLUSIEURS TACOS
+                        if(isset($_SESSION["idCommande"]))
+                        {
+                            unset($_SESSION["idCommande"]);
+                            if(isset($_SESSION["idCommande"]))
+                            {
+                                echo $_SESSION["idCommande"];
+                            }
+                        }
+                        
                         $controlAccueil = new ControllerAccueil();
                         $controlAccueil->includeView();
                         
