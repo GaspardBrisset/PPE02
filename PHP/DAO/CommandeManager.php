@@ -103,4 +103,23 @@
             
             return $commande;
         }
+        
+        public static function updateCommande($commande)
+        {
+            $connex = DatabaseLinker::getConnexion();
+            
+            $idCommande = $commande->getIdCommande();
+            $prixCommande = $commande->getPrixCommande();
+            $dateCommande = $commande->getDateCommande();
+            $idClient = $commande->getIdClient();
+            
+            $state=$connex->prepare("UPDATE Commande SET prixCommande=? AND dateCommande=? AND idClient=? WHERE idCommande=?");
+            
+            $state->bindParam(1,$prixCommande);
+            $state->bindParam(2,$dateCommande);
+            $state->bindParam(3,$idClient);
+            $state->bindParam(4,$idCommande);
+            
+            $state->execute();
+        }
     }

@@ -22,9 +22,6 @@
         {
             $commande = new Commande();
             
-            //$commande->setPrixCommande(10.4);
-            //$commande->setDateCommande("2000-01-01 01:50:34");
-            //$commande->setIdClient(5555);
             CommandeManager::insertCommande($commande);
             
             $commande = CommandeManager::findLastCommande();

@@ -84,4 +84,32 @@
             
             $state->execute();
         }
+        
+        
+        public static function findLastClient()
+        {
+            $connex = DatabaseLinker::getConnexion();
+            $client = null;
+            
+            $state = $connex->prepare("SELECT * FROM Client WHERE idClient =(SELECT MAX(idClient) FROM Client)");
+            
+            $state->execute();
+                        
+            $resultats = $state->fetchAll();
+                    
+            if(sizeof($resultats)>0)
+            {
+                $result = $resultats[0];
+                $client = new Client(); 
+                
+                $client->setIdClient($result["idClient"]);
+                $client->setNom($result["nom"]);
+                $client->setPrenom($result["prenom"]);
+                $client->setEmail($result["email"]);
+                $client->setTelephone($result["telephone"]);
+                $client->setAdresse($result["adresse"]);
+            }
+            
+            return $client;
+        }
     }

@@ -44,7 +44,7 @@
 
                         include_once("pages/accueil/ControllerAccueil.php");
                         
-                        /*A VIRER SI ON VEUX POUVOIR COMMANDER PLUSIEURS TACOS
+                        //A VIRER SI ON VEUX POUVOIR COMMANDER PLUSIEURS TACOS
                         if(isset($_SESSION["idCommande"]))
                         {
                             unset($_SESSION["idCommande"]);
@@ -52,7 +52,7 @@
                             {
                                 echo $_SESSION["idCommande"];
                             }
-                        }*/
+                        }
                         
                         $controlAccueil = new ControllerAccueil();
                         $controlAccueil->includeView();
@@ -105,6 +105,24 @@
                         
                         $controlPanier = new ControllerPanier();
                         $controlPanier->includeView();
+                        
+                        break;
+                    
+                    case "infosClient" :
+                        
+                        include_once("pages/infosClient/ControllerInfosClient.php");
+                        
+                        $controlInfosClient = new ControllerInfosClient();
+                        $controlInfosClient->includeView();
+                        
+                        break;
+                    
+                    case "commandeIsOver" :
+                        
+                        include_once("pages/commandeIsOver/ControllerCommandeIsOver.php");
+                        
+                        $controlCommandeIsOver = new ControllerCommandeIsOver();
+                        $controlCommandeIsOver->includeView();
                         
                         break;
                     

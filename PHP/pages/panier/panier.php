@@ -19,19 +19,18 @@
     $tacosViandeIsSet = false;
     $tacosSauceIsSet = false;
     $boissonAndQuantiteIsSet = false;
+    $prixCommande = 0;
     
     if(!isset($_SESSION["idCommande"]))
     {
         ControllerPanier::newCommande();
     }
     
-
     
     if(isset($_SESSION["idTypeTacos"]))
     {
         $tacos = ControllerPanier::insertTacos($_SESSION["idTypeTacos"]); //Table Tacos (idTacos, idTypeTacos)
         $idTacos = $tacos->getIdTacos();
-        //echo "Tacos n°".$idTacos."<br>";
         
         ControllerPanier::insertCommandeTacos($idTacos); //Table CommandeTacos(idCommande, idTacos)
     }
@@ -41,15 +40,6 @@
     {
         if(ControllerPanier::insertTacosViande($idTacos)==true) //séparer le renvoie true/false et l'insertion ??
         {
-            //echo "Tacos créé dans la table TacosViande"."<br>";
-            $tabViandes = ControllerPanier::GetViandesWithTacos($idTacos);
-
-            foreach($tabViandes as $viande)
-            {
-                //echo " Viande: ".$viande->getNomViande();
-                $quantiteViande = TacosViandeManager::findQuantiteWithViandeAndTacos($idTacos, $viande->getIdViande());
-                //echo " Quantité: ".$quantiteViande."<br>";
-            }
             $tacosViandeIsSet=true;
         }
     }
@@ -120,6 +110,8 @@
         $typeTacosPanier = TypeTacosManager::findTypeTacos($idTypeTacosPanier);
         echo "Taille : ".$typeTacosPanier->getTaille()."<br>";
         echo "Prix : ".$typeTacosPanier->getPrixTaille()."€ <br>";
+        //AJOUT DU PRIX
+        $prixCommande = $prixCommande + $typeTacosPanier->getPrixTaille();
         
         $tabViandesPanier = TacosViandeManager::findViandesWithTacos($idTacosPanier);
         foreach($tabViandesPanier as $viandePanier)
@@ -139,13 +131,24 @@
     }
     
     $tabBoissonsPanier = ControllerPanier::getBoissonWithCommande($commandePanier->getIdCommande());
-    echo "Boisson : <br>";
+    if(sizeof($tabBoissonsPanier)>0)
+    {
+        echo "<br> Boisson : <br>";
+    }
+    
     foreach($tabBoissonsPanier as $boissonPanier)
     {
         echo $boissonPanier->getNomBoisson();
         $quantiteBoissonPanier = CommandeBoissonManager::findQuantiteWithCommandeAndBoisson($commandePanier->getIdCommande(), $boissonPanier->getIdBoisson());
         echo " Quantité : ".$quantiteBoissonPanier."<br>";
+        echo " Prix à l'unité : 1€ <br>";
+        $prixCommande = $prixCommande + 1*$quantiteBoissonPanier;
     }
+    
+    //CALCULER LE PRIX TOTAL
+    $_SESSION["prixTotal"] = $prixCommande;
+    echo "Prix total de la commande : ".$prixCommande." € <br>";
+    
     
     //RAJOUTER LA POSSIBILITE DE SUPPRIMER DES TACOS/BOISSONS
 ?>
