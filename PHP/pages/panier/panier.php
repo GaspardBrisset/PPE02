@@ -9,6 +9,7 @@
     include_once("/DTO/Commande.php");
     include_once("/DAO/CommandeTacosManager.php");
     include_once("/DAO/TypeTacosManager.php");
+    include_once("/DAO/CommandeBoissonManager.php");
 
     //insertion des données de session des form dans la bdd
     //obligatoirement : idTypeTacos + idViande1 + idSauce1
@@ -17,6 +18,7 @@
     
     $tacosViandeIsSet = false;
     $tacosSauceIsSet = false;
+    $boissonAndQuantiteIsSet = false;
     
     if(!isset($_SESSION["idCommande"]))
     {
@@ -70,7 +72,29 @@
         } 
     }
     
-
+    
+    if(isset($_SESSION["idBoisson"]) && isset($_SESSION["quantiteBoisson"]))
+    {
+        if(ControllerPanier::boissonIsAlreadySet($_SESSION["idBoisson"])==true)
+        {
+            ControllerPanier::updateQuantiteBoisson($_SESSION["idBoisson"], $_SESSION["quantiteBoisson"]);
+            $boissonAndQuantiteIsSet = true;
+        }
+        else
+        {
+            if(ControllerPanier::insertCommandeBoisson($_SESSION["idCommande"])==true)
+            {
+                $boissonAndQuantiteIsSet = true;
+            }
+        }
+    }
+    
+    if($boissonAndQuantiteIsSet==true)
+    {
+        unset($_SESSION["idBoisson"]);
+        unset($_SESSION["quantiteBoisson"]);
+    }
+    
     if(($tacosViandeIsSet && $tacosSauceIsSet)==true) 
     {
         unset($_SESSION["idTypeTacos"]);
@@ -80,14 +104,11 @@
         unset($_SESSION["idSauce1"]);
         unset($_SESSION["idSauce2"]);
     }
-?>
-    <a href="index.php?page=choixBoisson">Ajouter des boissons</a>
-<?php
     
     echo "<br>"."PANIER : "."<br>";
-    $commande = ControllerPanier::getCommande($_SESSION["idCommande"]);
-    echo "<br> Commande n° ".$commande->getIdCommande()."<br>";
-    $tabTacosPanier = ControllerPanier::getTacosWithCommande($_SESSION["idCommande"]);
+    $commandePanier = ControllerPanier::getCommande($_SESSION["idCommande"]);
+    echo "<br> Commande n° ".$commandePanier->getIdCommande()."<br>";
+    $tabTacosPanier = ControllerPanier::getTacosWithCommande($commandePanier->getIdCommande());
     
     foreach($tabTacosPanier as $tacosPanier)
     {
@@ -116,6 +137,20 @@
             echo " Quantité : ".$quantiteSaucePanier."<br>";
         }
     }
+    
+    $tabBoissonsPanier = ControllerPanier::getBoissonWithCommande($commandePanier->getIdCommande());
+    echo "Boisson : <br>";
+    foreach($tabBoissonsPanier as $boissonPanier)
+    {
+        echo $boissonPanier->getNomBoisson();
+        $quantiteBoissonPanier = CommandeBoissonManager::findQuantiteWithCommandeAndBoisson($commandePanier->getIdCommande(), $boissonPanier->getIdBoisson());
+        echo " Quantité : ".$quantiteBoissonPanier."<br>";
+    }
+    
+    //RAJOUTER LA POSSIBILITE DE SUPPRIMER DES TACOS/BOISSONS
 ?>
     <a href="index.php?page=choixTacos">Ajouter un tacos</a>
 
+    <a href="index.php?page=choixBoisson">Ajouter des boissons</a>
+
+    <a href="index.php?page=infosClient">Valider la commande</a>

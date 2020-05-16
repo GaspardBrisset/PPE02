@@ -1,12 +1,20 @@
 <?php
     include_once("/DAO/BoissonManager.php");
+    include_once("/DTO/CommandeBoisson.php");
+    include_once("/DAO/CommandeBoissonManager.php");
 
     class ControllerChoixBoisson
     {
-            
         public static function includeView()
         {
             include_once("/pages/choixBoisson/choixBoisson.php");
+        }
+        
+        
+        public static function redirectPanier()
+        {
+            header('Location: index.php?page=panier');
+            exit;
         }
         
         
@@ -17,7 +25,7 @@
         }
         
         
-        public static function BoissonSession()//insertion dans la commandeBoisson ?
+        public static function boissonSession()//insertion dans la commandeBoisson ?
         {
             //prof : mettre en session un tableau 
             //$tabBoissons = array();
@@ -43,34 +51,7 @@
             return $boissonSessionIsSet;
         }
         
-        
-        public static function insertCommandeBoisson($idCommandeSession)
-        {
-            $commandeBoissonIsSet = false;
 
-            $idBoisson = $_SESSION["idBoisson"];
-            $quantiteBoisson = $_SESSION["quantiteBoisson"];
-            
-            $commandeBoisson = new CommandeBoisson();
-            $commandeBoisson->setIdCommande($idCommandeSession);
-            $commandeBoisson->setIdBoisson($idBoisson);
-            $commandeBoisson->setQuantite($quantiteBoisson);
-   
-            CommandeBoissonManager::insertCommandeBoisson($commandeBoisson);
-            
-            if(sizeof(CommandeTacosManager::findBoissonsWithCommande($idCommandeSession))>0)
-            {
-                $commandeBoissonIsSet = true;
-            }
-            
-            return $commandeBoissonIsSet;
-        }
-        
-        public static function boissonIsAlreadySet()
-        {
-            //si la boisson est déjà insérée dans la commande, on ajoute la nouvelle quantité à l'ancienne quantité
-        }
     }
     
- 
 ?>

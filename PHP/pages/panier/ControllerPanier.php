@@ -8,6 +8,7 @@
     include_once("/DTO/Tacos.php");
     include_once("/DTO/Commande.php");
     include_once("/DAO/CommandeTacosManager.php");
+    include_once("/DAO/CommandeBoissonManager.php");
 
     class ControllerPanier
     {
@@ -73,10 +74,6 @@
         }
         
         
-        public static function insertCommandeBoisson()
-        {
-            //$commande = new CommandeTacos();   
-        }
         
         
         public static function insertTacosViande($idTacos)
@@ -278,6 +275,64 @@
         {
             $tabTacos = CommandeTacosManager::findTacosWithCommande($idCommande);
             return $tabTacos;
+        }
+        
+        public static function getBoissonWithCommande($idCommande)
+        {
+            $tabBoissons = CommandeBoissonManager::findBoissonsWithCommande($idCommande);
+            return $tabBoissons;           
+        }
+        
+        
+        public static function insertCommandeBoisson($idCommandeSession)
+        {
+            $commandeBoissonIsSet = false;
+
+            $idBoisson = $_SESSION["idBoisson"];
+            $quantiteBoisson = $_SESSION["quantiteBoisson"];
+            
+            $commandeBoisson = new CommandeBoisson();
+            $commandeBoisson->setIdCommande($idCommandeSession);
+            $commandeBoisson->setIdBoisson($idBoisson);
+            $commandeBoisson->setQuantite($quantiteBoisson);
+   
+            CommandeBoissonManager::insertCommandeBoisson($commandeBoisson);
+            
+            if(sizeof(CommandeBoissonManager::findBoissonsWithCommande($idCommandeSession))>0)
+            {
+                $commandeBoissonIsSet = true;
+            }
+            
+            return $commandeBoissonIsSet;
+        }
+        
+        public static function boissonIsAlreadySet($idBoisson)
+        {
+            //si la boisson est déjà insérée dans la commande, on ajoute la nouvelle quantité à l'ancienne quantité
+            
+            $tabBoissons = CommandeBoissonManager::findBoissonsWithCommande($_SESSION["idCommande"]);
+            
+            $boissonIsAlreadySet = false;
+            
+            foreach($tabBoissons as $boisson)
+            {
+                if($boisson->getIdBoisson()==$idBoisson)
+                {
+                    $boissonIsAlreadySet = true;
+                }
+            }
+            
+            return $boissonIsAlreadySet;
+        }
+        
+        
+        public static function updateQuantiteBoisson($idBoisson, $quantiteBoisson)
+        {
+            $commandeBoisson = CommandeBoissonManager::findCommandeBoissonWithCommandeAndBoisson($_SESSION["idCommande"], $idBoisson);
+            
+            $newQuantiteBoisson = $commandeBoisson->getQuantite()+$quantiteBoisson;
+            $commandeBoisson->setQuantite($newQuantiteBoisson);
+            CommandeBoissonManager::updateQuantiteBoisson($commandeBoisson, $_SESSION["idCommande"]);
         }
     }
 ?>

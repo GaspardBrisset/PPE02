@@ -2,6 +2,7 @@
 
     include_once("/tools/DatabaseLinker.php");
     include_once("/DTO/CommandeBoisson.php");
+    include_once("/DAO/BoissonManager.php");
 
     class CommandeBoissonManager
     {
@@ -28,7 +29,7 @@
             
             $connex = DatabaseLinker::getConnexion();
             
-            $state = $connex->prepare("SELECT idBoisson FROM CommandeBoisson WHERE idBoisson=?");
+            $state = $connex->prepare("SELECT idBoisson FROM CommandeBoisson WHERE idCommande=?");
             
             $state->bindParam(1,$idCommande);
             
@@ -45,13 +46,15 @@
             return $tabBoissons;
         }
         
-        public static function findCommandeBoissonWithCommande($idCommande)
+        
+        public static function findCommandeBoissonWithCommandeAndBoisson($idCommande, $idBoisson)
         {
             $connex = DatabaseLinker::getConnexion();
             $commandeBoisson = null;
             
-            $state = $connex->prepare("SELECT * FROM CommandeBoisson WHERE idCommande=?");
+            $state = $connex->prepare("SELECT * FROM CommandeBoisson WHERE idCommande=? AND idBoisson=?");
             $state->bindParam(1,$idCommande);
+            $state->bindParam(2,$idBoisson);
             
             $state->execute();
                         
@@ -69,6 +72,7 @@
             
             return $commandeBoisson;
         }
+        
         
         public static function findQuantiteWithCommandeAndBoisson($idCommande, $idBoisson)
         {
@@ -100,17 +104,18 @@
             return $quantite;
         }
         
-        public static function updateQuantiteBoisson($idCommande, $idBoisson, $quantiteBoisson)
+        public static function updateQuantiteBoisson($commandeBoisson, $idCommande)
         {
             $connex = DatabaseLinker::getConnexion();
             
-            $newAvatar = $user->getCheminAvatar();
+            $newQuantiteBoisson = $commandeBoisson->getQuantite();
+            $idBoisson = $commandeBoisson->getIdBoisson();
             
             $state=$connex->prepare("UPDATE CommandeBoisson SET quantite=? WHERE idBoisson=? AND idCommande=?");
             
-            $state->bindParam(1,$quantiteBoisson);
+            $state->bindParam(1,$newQuantiteBoisson);
             $state->bindParam(2,$idBoisson);
-            $state->bindParam(2,$idCommande);
+            $state->bindParam(3,$idCommande);
             
             $state->execute();
         }

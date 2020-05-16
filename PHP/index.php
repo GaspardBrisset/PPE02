@@ -44,7 +44,7 @@
 
                         include_once("pages/accueil/ControllerAccueil.php");
                         
-                        //A VIRER SI ON VEUX POUVOIR COMMANDER PLUSIEURS TACOS
+                        /*A VIRER SI ON VEUX POUVOIR COMMANDER PLUSIEURS TACOS
                         if(isset($_SESSION["idCommande"]))
                         {
                             unset($_SESSION["idCommande"]);
@@ -52,7 +52,7 @@
                             {
                                 echo $_SESSION["idCommande"];
                             }
-                        }
+                        }*/
                         
                         $controlAccueil = new ControllerAccueil();
                         $controlAccueil->includeView();

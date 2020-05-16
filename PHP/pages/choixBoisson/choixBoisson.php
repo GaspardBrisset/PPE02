@@ -1,5 +1,11 @@
 <?php
     include_once("/DTO/Boisson.php");
+    /*
+    unset($_SESSION["idBoisson"]);
+    unset($_SESSION["quantiteBoisson"]);
+    */
+     
+    $choixBoissonIsSet = false;
     
     if(!isset($_SESSION["idBoisson"]) && !isset($_SESSION["quantiteBoisson"]))
     {
@@ -27,19 +33,21 @@
 <?php
         }
     }
-    else
+  
+
+    if(ControllerChoixBoisson::boissonSession()==true)
     {
-        if(ControllerChoixBoisson::insertCommandeBoisson($_SESSION["idCommande"])==true)
-        {
-            $choixBoissonIsSet = true;
-        }
+        ControllerChoixBoisson::redirectPanier();
     }
     
-    if($choixBoissonIsSet==true)
-    {
-        unset($_SESSION["idBoisson"]);
-        unset($_SESSION["quantiteBoisson"]);
-    }
+    
+    
+    
+        
+    
+        
+    
+    
 
 
 
