@@ -27,41 +27,37 @@
     }
     
     
-    if(isset($_SESSION["idTypeTacos"]))
+    if(isset($_SESSION["idTypeTacos"]) && isset($_SESSION["idViande1"]) && isset($_SESSION["idSauce1"]))
     {
         $tacos = ControllerPanier::insertTacos($_SESSION["idTypeTacos"]); //Table Tacos (idTacos, idTypeTacos)
         $idTacos = $tacos->getIdTacos();
         
         ControllerPanier::insertCommandeTacos($idTacos); //Table CommandeTacos(idCommande, idTacos)
-    }
-    
-    //inutile sert juste à vérifier l'insertion en affichant les infos
-    if(isset($_SESSION["idViande1"]))
-    {
+        
+        
         if(ControllerPanier::insertTacosViande($idTacos)==true) //séparer le renvoie true/false et l'insertion ??
         {
             $tacosViandeIsSet=true;
         }
-    }
-
-    //inutile sert juste à vérifier l'insertion en affichant les infos
-    if(isset($_SESSION["idSauce1"]))
-    {
+        
+        
         if(ControllerPanier::insertTacosSauce($idTacos)==true) //séparer le renvoie true/false et l'insertion ??
         {
-            //echo "Tacos créé dans la table TacosSauce"."<br>";
+            /*
             $tabSauces = ControllerPanier::GetSaucesWithTacos($idTacos);
-
             foreach($tabSauces as $sauce)
             {
                 //echo " Sauce: ".$sauce->getNomSauce();
                 $quantiteSauce = TacosSauceManager::findQuantiteWithSauceAndTacos($idTacos, $sauce->getIdSauce());
                 //echo " Quantité: ".$quantiteSauce;
             }
+            */
+            
             $tacosSauceIsSet = true;
         } 
     }
     
+
     
     if(isset($_SESSION["idBoisson"]) && isset($_SESSION["quantiteBoisson"]))
     {
@@ -158,3 +154,5 @@
     <a href="index.php?page=choixBoisson">Ajouter des boissons</a>
 
     <a href="index.php?page=infosClient">Valider la commande</a>
+
+    <a href="index.php?page=accueil">Retour sur la page d'accueil</a>

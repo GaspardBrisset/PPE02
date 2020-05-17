@@ -35,7 +35,8 @@
                     <input type="radio" 
                            name="button-choix-sauce1" 
                            id='<?php echo "sauce".$sauce->getIdSauce(); ?>' 
-                           value='<?php echo $sauce->getIdSauce(); ?>'/>
+                           value='<?php echo $sauce->getIdSauce(); ?>'
+                           <?php if($sauce->getIdSauce()==1){echo " checked";}?>/>
 
                     <label for='<?php echo "sauce".$sauce->getIdSauce(); ?>'>
                         <?php echo $sauce->getNomSauce(); ?></label>
@@ -54,7 +55,8 @@
                     <input type="radio" 
                            name="button-choix-sauce2" 
                            id='<?php echo "sauce".$sauce->getIdSauce(); ?>' 
-                           value='<?php echo $sauce->getIdSauce(); ?>'/>
+                           value='<?php echo $sauce->getIdSauce(); ?>'
+                           <?php if($sauce->getIdSauce()==1){echo " checked";}?>/>
 
                     <label for='<?php echo "sauce".$sauce->getIdSauce(); ?>'>
                         <?php echo $sauce->getNomSauce(); ?></label>
@@ -73,3 +75,4 @@
         ControllerChoixSauce::redirectPanier();
     }
 ?>
+    <a href="index.php?page=panier">Retour vers le panier</a>

@@ -56,7 +56,6 @@
                             unset($_SESSION["idCommande"]);
                             session_unset();
                             $_SESSION["isOver"] = false;
-                            
                         }
                         
                         $controlAccueil = new ControllerAccueil();

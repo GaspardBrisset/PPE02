@@ -24,7 +24,8 @@
                     <input type="radio" 
                            name="button-choix-viande1" 
                            id='<?php echo "viande".$viande->getIdViande(); ?>' 
-                           value='<?php echo $viande->getIdViande(); ?>'/>
+                           value='<?php echo $viande->getIdViande(); ?>'
+                           <?php if($viande->getIdViande()==1){echo " checked";}?>/>
 
                     <label for='<?php echo "viande".$viande->getIdViande(); ?>'>
                         <?php echo $viande->getNomViande(); ?></label>
@@ -43,7 +44,8 @@
                     <input type="radio" 
                            name="button-choix-viande2" 
                            id='<?php echo "viande".$viande->getIdViande(); ?>' 
-                           value='<?php echo $viande->getIdViande(); ?>'/>
+                           value='<?php echo $viande->getIdViande(); ?>'
+                           <?php if($viande->getIdViande()==1){echo " checked";}?>/>
 
                     <label for='<?php echo "viande".$viande->getIdViande(); ?>'>
                         <?php echo $viande->getNomViande(); ?></label>
@@ -62,7 +64,8 @@
                     <input type="radio" 
                            name="button-choix-viande3" 
                            id='<?php echo "viande".$viande->getIdViande(); ?>' 
-                           value='<?php echo $viande->getIdViande(); ?>'/>
+                           value='<?php echo $viande->getIdViande(); ?>'
+                           <?php if($viande->getIdViande()==1){echo " checked";}?>/>
 
                     <label for='<?php echo "viande".$viande->getIdViande(); ?>'>
                         <?php echo $viande->getNomViande(); ?></label>
