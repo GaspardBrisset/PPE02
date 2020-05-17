@@ -113,7 +113,7 @@
             $dateCommande = $commande->getDateCommande();
             $idClient = $commande->getIdClient();
             
-            $state=$connex->prepare("UPDATE Commande SET prixCommande=? AND dateCommande=? AND idClient=? WHERE idCommande=?");
+            $state=$connex->prepare("UPDATE Commande SET prixCommande=?, dateCommande=?, idClient=? WHERE idCommande=?");
             
             $state->bindParam(1,$prixCommande);
             $state->bindParam(2,$dateCommande);

@@ -1,10 +1,17 @@
 <?php 
-    //session_unset();
     //session_destroy();
+    //session_unset();
+    
     if(empty($_SESSION))
     {
+        echo "bonjour session est vide";
         session_name("commande_tacos");
         session_start();
+    }
+    
+    if(!empty($_SESSION))
+    {
+        echo " // non c'est bon session n'est plus vide";
     }
 ?>
 
@@ -44,14 +51,12 @@
 
                         include_once("pages/accueil/ControllerAccueil.php");
                         
-                        //A VIRER SI ON VEUX POUVOIR COMMANDER PLUSIEURS TACOS
-                        if(isset($_SESSION["idCommande"]))
+                        if($_SESSION["isOver"]==true)
                         {
                             unset($_SESSION["idCommande"]);
-                            if(isset($_SESSION["idCommande"]))
-                            {
-                                echo $_SESSION["idCommande"];
-                            }
+                            session_unset();
+                            $_SESSION["isOver"] = false;
+                            
                         }
                         
                         $controlAccueil = new ControllerAccueil();

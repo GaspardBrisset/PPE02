@@ -1,6 +1,13 @@
 <?php
     //unset($_SESSION["idClient"]);
     
+
+    if(ControllerInfosClient::newClient()==true)
+    {
+        ControllerInfosClient::redirectCommandeIsOver();
+    }
+    
+
     if(!isset($_SESSION["idClient"]))
     {    
 ?>
@@ -21,12 +28,12 @@
         </form>
 <?php
     }
-    
-    if(ControllerInfosClient::clientSession()==true)
+    else 
     {
-        ControllerInfosClient::insertClient();
-        ControllerInfosClient::redirectCommandeIsOver();
-        
+        echo $_SESSION["idClient"];
     }
+    
+    
+    
 ?>
 

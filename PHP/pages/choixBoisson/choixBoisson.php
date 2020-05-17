@@ -18,7 +18,7 @@
             <form method="POST" action="index.php?page=choixBoisson">
                 <SELECT name='<?php echo "liste-boisson-quantite";?>' size="1">
 <?php
-                    for($i=0;$i<=5;$i++)
+                    for($i=1;$i<=5;$i++)
                     {
 ?>
                         <option> <?php echo $i; ?> 

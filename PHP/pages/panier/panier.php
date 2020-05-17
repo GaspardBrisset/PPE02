@@ -93,6 +93,7 @@
         unset($_SESSION["idViande3"]);
         unset($_SESSION["idSauce1"]);
         unset($_SESSION["idSauce2"]);
+        unset($_SESSION["idClient"]);
     }
     
     echo "<br>"."PANIER : "."<br>";
@@ -147,7 +148,7 @@
     
     //CALCULER LE PRIX TOTAL
     $_SESSION["prixTotal"] = $prixCommande;
-    echo "Prix total de la commande : ".$prixCommande." € <br>";
+    echo "<br> Prix total de la commande : ".$prixCommande." € <br>";
     
     
     //RAJOUTER LA POSSIBILITE DE SUPPRIMER DES TACOS/BOISSONS

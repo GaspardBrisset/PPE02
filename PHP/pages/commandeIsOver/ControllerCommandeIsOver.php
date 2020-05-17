@@ -3,6 +3,7 @@
     include_once("/DAO/ClientManager.php");
     include_once("/DAO/CommandeManager.php");
 
+    date_default_timezone_set('Europe/Paris');
     
     class ControllerCommandeIsOver
     {

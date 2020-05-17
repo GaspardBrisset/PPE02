@@ -10,7 +10,6 @@
             include_once("/pages/choixBoisson/choixBoisson.php");
         }
         
-        
         public static function redirectPanier()
         {
             header('Location: index.php?page=panier');
