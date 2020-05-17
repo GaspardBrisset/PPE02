@@ -65,6 +65,11 @@
                     
                     case "contact" :
                         
+                        include_once("pages/contact/ControllerContact.php");
+                        
+                        $controlContact = new ControllerContact();
+                        $controlContact->includeView();
+                        
                         break;
                     
                     case "choixTacos" :

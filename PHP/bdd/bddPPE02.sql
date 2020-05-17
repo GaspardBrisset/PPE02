@@ -66,6 +66,12 @@ idSauce INT,
 quantite INT,
 PRIMARY KEY(idTacos, idSauce));
 
+CREATE TABLE IF NOT EXISTS Message(
+idMessage INT AUTO_INCREMENT,
+contenuMessage TEXT,
+idClient INT,
+PRIMARY KEY(idMessage));
+
 CREATE TABLE IF NOT EXISTS Sauce(
 idSauce INT AUTO_INCREMENT,
 nomSauce VARCHAR(64),
@@ -120,6 +126,11 @@ ALTER TABLE TacosSauce
 ADD CONSTRAINT TacosSauce_idSauce
 FOREIGN KEY (idSauce)
 REFERENCES Sauce(idSauce);
+
+ALTER TABLE Message
+ADD CONSTRAINT Message_idClient
+FOREIGN KEY (idClient)
+REFERENCES Client(idClient);
 
 INSERT INTO Client (nom, prenom, email, telephone, adresse) VALUES 
 ('JEAN', 'Jean', 'JeanJean@gmail.com', 0607080910, '8 rue des peupliers'),
