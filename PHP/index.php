@@ -117,6 +117,24 @@
                         
                         break;
                     
+                    case "deleteTacos" :
+                        
+                        include_once("pages/deleteTacos/ControllerDeleteTacos.php");
+                        
+                        $controlDeleteTacos = new ControllerDeleteTacos();
+                        $controlDeleteTacos->includeView();
+                        
+                        break;
+                    
+                    case "deleteBoisson" :
+                        
+                        include_once("pages/deleteBoisson/ControllerDeleteBoisson.php");
+                        
+                        $controlDeleteBoisson = new ControllerDeleteBoisson();
+                        $controlDeleteBoisson->includeView();
+                        
+                        break;
+                    
                     case "infosClient" :
                         
                         include_once("pages/infosClient/ControllerInfosClient.php");

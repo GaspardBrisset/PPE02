@@ -20,6 +20,9 @@
         echo "Votre commande arrivera dans 25 minutes. Bon appétit ! <br>";
         echo "Le réglement de la commande sera effectué lors de la livraison.";
         $_SESSION["isOver"] = true;
+        unset($_SESSION["idCommande"]);
+        unset($_SESSION["idClient"]);
+        unset($_SESSION["prixTotal"]);
     }
 ?>
     <a href="index.php?page=accueil">Retour sur la page d'accueil</a>

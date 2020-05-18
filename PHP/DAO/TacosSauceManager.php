@@ -46,7 +46,8 @@
             return $tabSauces;
         }
         
-        public static function findTacos($idTacos)
+        /*
+        public static function findTacosSauce($idTacos)
         {
             $connex = DatabaseLinker::getConnexion();
             $tacosSauce = null;
@@ -70,6 +71,7 @@
             
             return $tacosSauce;
         }
+        */
         
         public static function findQuantiteWithSauceAndTacos($idTacos, $idSauce)
         {
@@ -99,6 +101,17 @@
             }
             
             return $quantite;
+        }
+        
+        public static function deleteTacosSauce($idTacos)
+        {
+            $connex = DatabaseLinker::getConnexion();
+            
+            $state=$connex->prepare("DELETE FROM TacosSauce WHERE idTacos=?");
+            
+            $state->bindParam(1,$idTacos);
+            
+            $state->execute();
         }
     }
 ?>

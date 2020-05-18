@@ -46,7 +46,8 @@
             return $tabViandes;
         }
         
-        public static function findTacosViandeWithTacos($idTacos)
+        /*
+        public static function findTacosViandeWithTacos($idTacos) //changer nom ? pour findTacosViande =>all car renvoie plusieurs
         {
             $connex = DatabaseLinker::getConnexion();
             $tacosViande = null;
@@ -70,6 +71,7 @@
             
             return $tacosViande;
         }
+        */
         
         public static function findQuantiteWithViandeAndTacos($idTacos, $idViande)
         {
@@ -99,6 +101,17 @@
             }
             
             return $quantite;
+        }
+        
+        public static function deleteTacosViande($idTacos)
+        {
+            $connex = DatabaseLinker::getConnexion();
+            
+            $state=$connex->prepare("DELETE FROM TacosViande WHERE idTacos=?");
+            
+            $state->bindParam(1,$idTacos);
+            
+            $state->execute();
         }
     }
 ?>

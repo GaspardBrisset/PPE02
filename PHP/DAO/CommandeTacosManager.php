@@ -44,6 +44,7 @@
             return $tabTacos;
         }
         
+        /*
         public static function findCommandeTacosWithCommande($idCommande)
         {
             $connex = DatabaseLinker::getConnexion();
@@ -66,6 +67,19 @@
             }
             
             return $commandeTacos;
+        }
+        */
+        
+        
+        public static function deleteCommandeTacos($idTacos)
+        {
+            $connex = DatabaseLinker::getConnexion();
+            
+            $state=$connex->prepare("DELETE FROM CommandeTacos WHERE idTacos=?");
+            
+            $state->bindParam(1,$idTacos);
+            
+            $state->execute();
         }
     }
 ?>

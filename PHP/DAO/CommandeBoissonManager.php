@@ -46,6 +46,30 @@
             return $tabBoissons;
         }
         
+        public static function findBoissonsWithCommandeAndBoisson($idCommande, $idBoisson)
+        {
+            $tabBoissons = array();
+            
+            $connex = DatabaseLinker::getConnexion();
+            
+            $state = $connex->prepare("SELECT idBoisson FROM CommandeBoisson WHERE idCommande=? AND idBoisson=?");
+            
+            $state->bindParam(1,$idCommande);
+            $state->bindParam(2,$idBoisson);
+            
+            $state->execute();
+            
+            $resultats = $state->fetchAll();
+            
+            foreach($resultats as $result)
+            {
+                $boisson = BoissonManager::findBoisson($result["idBoisson"]);
+                $tabBoissons[] = $boisson;
+            }
+            
+            return $tabBoissons;
+        }
+        
         
         public static function findCommandeBoissonWithCommandeAndBoisson($idCommande, $idBoisson)
         {
@@ -116,6 +140,18 @@
             $state->bindParam(1,$newQuantiteBoisson);
             $state->bindParam(2,$idBoisson);
             $state->bindParam(3,$idCommande);
+            
+            $state->execute();
+        }
+        
+        public static function deleteBoissonInCommande($idBoisson, $idCommande)
+        {
+            $connex = DatabaseLinker::getConnexion();
+            
+            $state=$connex->prepare("DELETE FROM CommandeBoisson WHERE idBoisson=? AND idCommande=?");
+            
+            $state->bindParam(1,$idBoisson);
+            $state->bindParam(2,$idCommande);
             
             $state->execute();
         }

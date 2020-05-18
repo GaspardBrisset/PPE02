@@ -20,10 +20,14 @@
     $tacosSauceIsSet = false;
     $boissonAndQuantiteIsSet = false;
     $prixCommande = 0;
-    
+    //ControllerPanier::newCommande();
     if(!isset($_SESSION["idCommande"]))
     {
         ControllerPanier::newCommande();
+    }
+    else
+    {
+        echo $_SESSION["idCommande"];
     }
     
     
@@ -101,7 +105,9 @@
     {
         $idTacosPanier = $tacosPanier->getIdTacos();
         echo "<br> Tacos n° ".$idTacosPanier."<br>";
-        
+?>
+        <a href='index.php?page=deleteTacos&idTacos=<?php echo $tacosPanier->getIdTacos(); ?>'>Supprimer tacos</a>
+<?php
         $idTypeTacosPanier = $tacosPanier->getIdTypeTacos();
         echo "Tacos de type n° ".$idTypeTacosPanier."<br>";
         $typeTacosPanier = TypeTacosManager::findTypeTacos($idTypeTacosPanier);
@@ -135,7 +141,11 @@
     
     foreach($tabBoissonsPanier as $boissonPanier)
     {
-        echo $boissonPanier->getNomBoisson();
+        echo $boissonPanier->getIdBoisson()."<br>";
+        echo $boissonPanier->getNomBoisson()."<br>";
+?>
+        <a href='index.php?page=deleteBoisson&idBoisson=<?php echo $boissonPanier->getIdBoisson(); ?>'>Supprimer boisson</a>
+<?php
         $quantiteBoissonPanier = CommandeBoissonManager::findQuantiteWithCommandeAndBoisson($commandePanier->getIdCommande(), $boissonPanier->getIdBoisson());
         echo " Quantité : ".$quantiteBoissonPanier."<br>";
         echo " Prix à l'unité : 1€ <br>";
