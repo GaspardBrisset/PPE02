@@ -143,12 +143,12 @@ INSERT INTO Commande(prixCommande, dateCommande, idClient) VALUES
 (11, '2020-04-09', 3);
 
 INSERT INTO Boisson(nomBoisson, prixBoisson) VALUES
-('Coca-Cola 33cl', 1),
-('Coca-Cola Zero 33cl', 1),
-('Coca-Cola cherry 33cl', 1),
-('Fanta 33cl', 1),
-('IceTea 33cl', 1),
-('Oasis 33cl', 1);
+('Coca-Cola', 1),
+('Coca-Cola cherry', 1),
+('Sprite', 1),
+('Fanta', 1),
+('IceTea', 1),
+('Oasis', 1);
 
 INSERT INTO TypeTacos(taille, prixTaille) VALUES
 ('M', 5),
@@ -157,24 +157,19 @@ INSERT INTO TypeTacos(taille, prixTaille) VALUES
 
 INSERT INTO  Viande(nomViande) VALUES
 ('Bacon'),
-('Steak'),
 ('Escalope'),
-('Poulet marine'),
 ('Kebab'),
 ('Cordon Bleu'),
 ('Nuggets'),
-('Merguez'),
-('Tenders');
+('Merguez');
 
 INSERT INTO Sauce(nomSauce) VALUES
 ('Curry'),
 ('Barbecue'),
 ('Blanche'),
-('Mayonnaise'),
 ('Burger'),
 ('Samurai'),
-('Ketchup'),
-('Harissa');
+('Ketchup');
 
 INSERT INTO Tacos(idTypeTacos) VALUES
 (1),
@@ -196,16 +191,16 @@ INSERT INTO CommandeTacos(idCommande, idTacos) VALUES
 
 INSERT INTO TacosViande(idTacos, idViande, quantite) VALUES
 (1,4,1),
-(2,7,2),
+(2,1,2),
 (2,2,1),
 (3,3,1),
 (3,6,1),
-(4,8,1);
+(4,5,1);
 
 
 INSERT INTO TacosSauce(idTacos, idSauce, quantite) VALUES
 (1,5,1),
 (2,3,1),
-(2,8,1),
+(2,6,1),
 (3,1,2),
-(4,7,1);
+(4,2,1);

@@ -1,0 +1,63 @@
+.button-container-retour
+{
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.contact-titre
+{
+    text-transform: uppercase;
+    color: #FFBC61;
+    letter-spacing: 2px;
+    font-size: 30px;
+    margin-bottom: 10px;
+    justify-content: flex-start;
+}
+
+.contact-form
+{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+}
+
+
+.contact-line
+{
+    margin-bottom: 20px;
+}
+
+.contact-input
+{
+    padding: 10px;
+    width: 300px;
+    height: 50px;
+    border-radius: 20px;
+    border: 0.5px solid #fdd380;
+    font-size: 20px;
+    outline: none;
+}
+
+.contact-message
+{
+    resize: none;
+    width: 300px;
+    height: 200px;
+    border-radius: 20px;
+    border: 0.5px solid #fdd380;
+    font-size: 20px;
+    padding: 10px;
+    outline: none;
+}
+
+.contact-label
+{
+    display: inline-block;
+    width: 200px;
+}
+

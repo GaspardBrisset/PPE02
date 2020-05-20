@@ -21,7 +21,10 @@
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="css/general.css" media="all"/>
+        <link rel="stylesheet" href="pages/accueil/accueil.css"/>
+        <link rel="stylesheet" href="pages/contact/contact.css"/>
         <link rel="icon" type="image/png" href="images/icone.png"/>
+        
 
         <meta charset="utf-8" />
         <title>Tacosland</title>		
@@ -29,8 +32,34 @@
     <body>
 
 
+        <div class="menu">
+                
+            <div class="menu-left">
+                <a class="menu-logo" href="index.php?page=accueil">
+                     Tacosland
+                </a>
+            </div>
+
+            <div class="menu-right">
+                <a class="menu-link" href="index.php?page=contact">
+                    Contact
+                </a>
+                <a class="menu-link" href="index.php?page=accueil#carte">
+                    Carte
+                </a>
+                <a class="menu-link" href="#infos">
+                    Infos
+                </a>
+                <a class="menu-link" href="index.php?page=panier">
+                    <img class="menu-icone" src="images/general/panier.png"/>
+                </a>
+            </div>
+                
+            </div>
+        
         <div class="page-container">
 
+            
             <div class="page-content">
 <?php
 
