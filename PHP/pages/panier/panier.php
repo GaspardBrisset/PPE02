@@ -11,15 +11,13 @@
     include_once("/DAO/TypeTacosManager.php");
     include_once("/DAO/CommandeBoissonManager.php");
 
-    //insertion des données de session des form dans la bdd
-    //obligatoirement : idTypeTacos + idViande1 + idSauce1
-    //peut-etre : idViande2 + idViande3 + idSauce2
-    //au moment de valider la commande => CommandeManager::insertCommande($commande);
+
     
     $tacosViandeIsSet = false;
     $tacosSauceIsSet = false;
     $boissonAndQuantiteIsSet = false;
     $prixCommande = 0;
+    
     //ControllerPanier::newCommande();
     
     if(!isset($_SESSION["idCommande"]))
@@ -28,7 +26,7 @@
     }
     else
     {
-        echo $_SESSION["idCommande"];
+        //echo $_SESSION["idCommande"];
     }
     
     
@@ -39,12 +37,10 @@
         
         ControllerPanier::insertCommandeTacos($idTacos); //Table CommandeTacos(idCommande, idTacos)
         
-        
         if(ControllerPanier::insertTacosViande($idTacos)==true) //séparer le renvoie true/false et l'insertion ??
         {
             $tacosViandeIsSet=true;
         }
-        
         
         if(ControllerPanier::insertTacosSauce($idTacos)==true) //séparer le renvoie true/false et l'insertion ??
         {
@@ -86,83 +82,138 @@
         unset($_SESSION["idSauce2"]);
         unset($_SESSION["idClient"]);
     }
-    
-    echo "<br>"."PANIER : "."<br>";
+  
+?>  
+
+    <div class="panier-titre">Panier</div>
+<?php
     $commandePanier = ControllerPanier::getCommande($_SESSION["idCommande"]);
+?>
+    <div class="panier-commande"> <?php echo "Commande #".$commandePanier->getIdCommande();?> </div>
+
+
+
+<table>
     
-
-        echo "<br> Commande n° ".$commandePanier->getIdCommande()."<br>";
+    <tr>
+        <th>Produit</th>
+        <th>Quantité</th>
+        <th>Prix</th>
+        <th>Total</th>
+        <th> </th>
+    </tr>
+    
+<?php
         $tabTacosPanier = ControllerPanier::getTacosWithCommande($commandePanier->getIdCommande());
-
+      
         foreach($tabTacosPanier as $tacosPanier)
         {
             $idTacosPanier = $tacosPanier->getIdTacos();
-            echo "<br> Tacos n° ".$idTacosPanier."<br>";
-?>
-            <a href='index.php?page=deleteTacos&idTacos=<?php echo $tacosPanier->getIdTacos(); ?>'>Supprimer tacos</a>
-<?php
             $idTypeTacosPanier = $tacosPanier->getIdTypeTacos();
-            echo "Tacos de type n° ".$idTypeTacosPanier."<br>";
             $typeTacosPanier = TypeTacosManager::findTypeTacos($idTypeTacosPanier);
-            echo "Taille : ".$typeTacosPanier->getTaille()."<br>";
-            echo "Prix : ".$typeTacosPanier->getPrixTaille()."€ <br>";
-            //AJOUT DU PRIX
+?>
+            <tr>
+                <td> <?php echo "Tacos taille ".$typeTacosPanier->getTaille();?> </td>
+                <td> </td>
+                <td> <?php echo $typeTacosPanier->getPrixTaille().",00 €";?> </td>
+                <td> <?php echo $typeTacosPanier->getPrixTaille().",00 €";?> </td>
+                <td> 
+                    <a class="lien-supprimer" href='index.php?page=deleteTacos&idTacos=<?php echo $tacosPanier->getIdTacos(); ?>'>
+                        <img class="icone-supprimer" src="images/general/poubelle.png">
+                    </a>
+                </td>
+            </tr>
+<?php 
             $prixCommande = $prixCommande + $typeTacosPanier->getPrixTaille();
-
             $tabViandesPanier = TacosViandeManager::findViandesWithTacos($idTacosPanier);
+                
             foreach($tabViandesPanier as $viandePanier)
             {
-                echo "Viande : ".$viandePanier->getNomViande();
                 $quantiteViandePanier = TacosViandeManager::findQuantiteWithViandeAndTacos($idTacosPanier, $viandePanier->getIdViande());
-                echo " Quantité : ".$quantiteViandePanier."<br>";
+?>  
+                <tr>
+                    <td> <?php echo "Viande ".$viandePanier->getNomViande(); ?> </td>
+                    <td> <?php echo $quantiteViandePanier; ?> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                </tr>       
+<?php
             }
 
             $tabSaucesPanier = TacosSauceManager::findSaucesWithTacos($idTacosPanier);
+                
             foreach($tabSaucesPanier as $saucePanier)
             {
-                echo "Sauce : ".$saucePanier->getNomSauce();
                 $quantiteSaucePanier = TacosSauceManager::findQuantiteWithSauceAndTacos($idTacosPanier, $saucePanier->getIdSauce());
-                echo " Quantité : ".$quantiteSaucePanier."<br>";
-            }
-        }
-
+?>
+                <tr>
+                    <td> <?php echo "Sauce ".$saucePanier->getNomSauce();?> </td>
+                    <td> <?php echo $quantiteSaucePanier;?> </td>
+                    <td> </td>   
+                    <td> </td>
+                    <td> </td>
+                </tr>
+<?php
+            }  
+        }//fin foreach tacos viande sauce
+        
         $tabBoissonsPanier = ControllerPanier::getBoissonWithCommande($commandePanier->getIdCommande());
-        if(sizeof($tabBoissonsPanier)>0)
-        {
-            echo "<br> Boisson : <br>";
-        }
-
+    
         foreach($tabBoissonsPanier as $boissonPanier)
         {
-            echo $boissonPanier->getIdBoisson()."<br>";
-            echo $boissonPanier->getNomBoisson()."<br>";
-?>
-            <a href='index.php?page=deleteBoisson&idBoisson=<?php echo $boissonPanier->getIdBoisson(); ?>'>Supprimer boisson</a>
-<?php
             $quantiteBoissonPanier = CommandeBoissonManager::findQuantiteWithCommandeAndBoisson($commandePanier->getIdCommande(), $boissonPanier->getIdBoisson());
-            echo " Quantité : ".$quantiteBoissonPanier."<br>";
-            echo " Prix à l'unité : 1€ <br>";
+?>
+            <tr>
+                <td> <?php echo $boissonPanier->getNomBoisson();?> </td>
+                <td> <?php echo $quantiteBoissonPanier;?> </td>
+                <td> <?php echo $boissonPanier->getPrixBoisson().",00 €";?> </td>
+                <td> <?php echo $boissonPanier->getPrixBoisson()*$quantiteBoissonPanier.",00 €";?> </td>
+                <td> 
+                    <a class="lien-supprimer" href='index.php?page=deleteBoisson&idBoisson=<?php echo $boissonPanier->getIdBoisson(); ?>'>
+                        <img class="icone-supprimer" src="images/general/poubelle.png">
+                    </a>
+                </td>
+            </tr>    
+<?php
+
             $prixCommande = $prixCommande + 1*$quantiteBoissonPanier;
         }
-
-    //CALCULER LE PRIX TOTAL
-    $_SESSION["prixTotal"] = $prixCommande;
-    echo "<br> Prix total de la commande : ".$prixCommande." € <br>";
-    
-    
-    //RAJOUTER LA POSSIBILITE DE SUPPRIMER DES TACOS/BOISSONS
+        
+        $_SESSION["prixTotal"] = $prixCommande;
 ?>
-    <a href="index.php?page=choixTacos">Ajouter un tacos</a>
+                
+            <tr>
+                <td> </td>
+                <td> </td>
+                <td> </td>
+                <td> <?php echo $prixCommande.",00 €"; ?></td>
+                <td> </td>
+            </tr>       
+                
+</table>
+    
+<?php
+        
+    
+    
+?>
+    <div class="button-container-ajout">
+        <a class="button" href="index.php?page=choixTacos">+ Tacos</a>
 
-    <a href="index.php?page=choixBoisson">Ajouter des boissons</a>
+        <a class="button" href="index.php?page=choixBoisson">+ Boisson</a>
+    </div>
 <?php
     if($_SESSION["prixTotal"]>0)
     {
 ?>
-        <a href="index.php?page=infosClient">Valider la commande</a>
+        <div class="button-container">
+            <a class="button" href="index.php?page=infosClient">Valider la commande</a>
+        </div>
 <?php
     }
 ?>
     
-
-    <a href="index.php?page=accueil">Retour sur la page d'accueil</a>
+    <div class="button-container">
+        <a class="button" href="index.php?page=accueil#carte">Voir la carte</a>
+    </div>

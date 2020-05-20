@@ -4,31 +4,25 @@
     
     if(empty($_SESSION))
     {
-        echo "bonjour session est vide";
         session_name("commande_tacos");
         session_start();
-    }
-    
-    if(!empty($_SESSION))
-    {
-        echo " // non c'est bon session n'est plus vide";
     }
 ?>
 
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+        <meta charset="utf-8"/>
+        <title>Tacosland</title>
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"/>
         <link rel="stylesheet" type="text/css" href="css/general.css" media="all"/>
         <link rel="stylesheet" href="pages/accueil/accueil.css"/>
         <link rel="stylesheet" href="pages/contact/contact.css"/>
-        <link rel="icon" type="image/png" href="images/icone.png"/>
-        
-
-        <meta charset="utf-8" />
-        <title>Tacosland</title>		
+        <link rel="stylesheet" href="pages/panier/panier.css"/>
+        <link rel="shortcut icon" type="ico" href="images/general/favicon.ico"/>
+          		
     </head>
+    
     <body>
 
 
@@ -47,7 +41,7 @@
                 <a class="menu-link" href="index.php?page=accueil#carte">
                     Carte
                 </a>
-                <a class="menu-link" href="#infos">
+                <a class="menu-link" href="index.php?page=accueil">
                     Infos
                 </a>
                 <a class="menu-link" href="index.php?page=panier">
@@ -134,6 +128,8 @@
                         
                         $controlChoixBoisson = new ControllerChoixBoisson();
                         $controlChoixBoisson->includeView();
+                        
+                        
                         
                         break;
                     

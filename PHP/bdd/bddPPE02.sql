@@ -144,7 +144,7 @@ INSERT INTO Commande(prixCommande, dateCommande, idClient) VALUES
 
 INSERT INTO Boisson(nomBoisson, prixBoisson) VALUES
 ('Coca-Cola', 1),
-('Coca-Cola cherry', 1),
+('Evian', 1),
 ('Sprite', 1),
 ('Fanta', 1),
 ('IceTea', 1),

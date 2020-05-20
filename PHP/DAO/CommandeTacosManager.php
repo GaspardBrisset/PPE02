@@ -44,6 +44,35 @@
             return $tabTacos;
         }
         
+        
+        public static function findTacosWithCommandeAndTacos($idCommande, $idTacos)
+        {
+            $tacos = null;
+            
+            $connex = DatabaseLinker::getConnexion();
+            
+            $state = $connex->prepare("SELECT * FROM CommandeTacos WHERE idCommande=? AND idTacos=?");
+            
+            $state->bindParam(1,$idCommande);
+            $state->bindParam(2,$idTacos);
+            
+            $state->execute();
+                        
+            $resultats = $state->fetchAll();
+                    
+            if(sizeof($resultats)>0)
+            {
+                $result = $resultats[0];
+                $tacos = new CommandeTacos(); 
+                
+                $tacos->setIdTacos($result["idTacos"]);
+                $tacos->setIdCommande($result["idCommande"]);
+            }
+            
+            return $tacos;
+        }
+        
+        
         /*
         public static function findCommandeTacosWithCommande($idCommande)
         {

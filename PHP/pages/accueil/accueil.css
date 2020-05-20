@@ -52,6 +52,8 @@
     display: flex;
     justify-content:  center;
     flex-direction: column;
+    border-top: 0.5px solid black;
+    padding: 10px;
 }
 
 .carte-section
@@ -62,6 +64,7 @@
     flex-direction: column;
     align-items:  center;
     margin-bottom: 20px;
+    
 }
 
 .carte-section-titre
@@ -85,11 +88,12 @@
 
 .carte-section-element
 {
-    border: 0.5px solid black;
+    /*border: 0.5px solid black;*/
     padding: 10px;
     display:flex;
     align-items: center;
     flex-direction: column;
+    width: 150px;
 }
 
 .element-titre
@@ -97,13 +101,13 @@
     text-transform: uppercase;
     color: black;
     letter-spacing: 2px;
-    font-size: 25px;
+    font-size: 20px;
     font-family: impact;
 }
 
 .element-ligne
 {
-    
+    font-size: 15px;
 }
 
 .element-image

@@ -60,6 +60,7 @@
 
                 <div class="element-titre"><?php echo $typeTacos->getTaille();?></div>
                 <div class="element-ligne"><?php echo $typeTacos->getIdTypeTacos();?> viande(s)</div>
+                <div class="element-ligne"><?php if($typeTacos->getIdTypeTacos()==1){ echo "1 sauce(s)";}else if($typeTacos->getIdTypeTacos()>1){ echo "2 sauce(s)";} ?></div>
                 <div class="element-ligne"><?php echo $typeTacos->getPrixTaille();?> € </div>
 
             </div>

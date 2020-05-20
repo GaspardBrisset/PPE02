@@ -5,27 +5,58 @@
     align-items: center;
     justify-content: flex-start;
     width: 100%;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
 }
 
-.contact-titre
+#button-retour
+{
+    margin-left: 100px;
+}
+
+.contact-titre-container
 {
     text-transform: uppercase;
     color: #FFBC61;
     letter-spacing: 2px;
     font-size: 30px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     justify-content: flex-start;
+    width: 100%;
+    flex-wrap: wrap;
+    
+}
+
+.contact-titre
+{
+    padding-left: 50px;
+    width: 100%;
+}
+
+.contact-form-container
+{
+    padding-top: 50px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .contact-form
 {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    align-items: center;
+    padding: 10px;
+    flex-wrap: wrap;
+    width: 50%
 }
 
+.contact-block-top
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
 
 .contact-line
 {
@@ -46,7 +77,7 @@
 .contact-message
 {
     resize: none;
-    width: 300px;
+    width: 100%;
     height: 200px;
     border-radius: 20px;
     border: 0.5px solid #fdd380;
@@ -55,9 +86,24 @@
     outline: none;
 }
 
+#message-label
+{
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    padding-left: 10px;
+    height: 40px;
+    align-items: center;
+}
+
 .contact-label
 {
     display: inline-block;
     width: 200px;
 }
 
+#button-container-submit
+{
+    justify-content: center;
+    font-size: 20px;
+}
