@@ -1,13 +1,19 @@
 <?php 
-
+    //session_destroy();
+    //session_unset();
+    
     if(empty($_SESSION))
     {
+        echo "bonjour session est vide";
         session_name("commande_tacos");
         session_start();
     }
     
+    if(!empty($_SESSION))
+    {
+        echo " // non c'est bon session n'est plus vide";
+    }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -44,13 +50,25 @@
                     case "accueil" : 
 
                         include_once("pages/accueil/ControllerAccueil.php");
-
+                        
+                        if($_SESSION["isOver"]==true)
+                        {
+                            unset($_SESSION["idCommande"]);
+                            session_unset();
+                            $_SESSION["isOver"] = false;
+                        }
+                        
                         $controlAccueil = new ControllerAccueil();
                         $controlAccueil->includeView();
                         
                         break;
                     
                     case "contact" :
+                        
+                        include_once("pages/contact/ControllerContact.php");
+                        
+                        $controlContact = new ControllerContact();
+                        $controlContact->includeView();
                         
                         break;
                     
@@ -96,6 +114,42 @@
                         
                         $controlPanier = new ControllerPanier();
                         $controlPanier->includeView();
+                        
+                        break;
+                    
+                    case "deleteTacos" :
+                        
+                        include_once("pages/deleteTacos/ControllerDeleteTacos.php");
+                        
+                        $controlDeleteTacos = new ControllerDeleteTacos();
+                        $controlDeleteTacos->includeView();
+                        
+                        break;
+                    
+                    case "deleteBoisson" :
+                        
+                        include_once("pages/deleteBoisson/ControllerDeleteBoisson.php");
+                        
+                        $controlDeleteBoisson = new ControllerDeleteBoisson();
+                        $controlDeleteBoisson->includeView();
+                        
+                        break;
+                    
+                    case "infosClient" :
+                        
+                        include_once("pages/infosClient/ControllerInfosClient.php");
+                        
+                        $controlInfosClient = new ControllerInfosClient();
+                        $controlInfosClient->includeView();
+                        
+                        break;
+                    
+                    case "commandeIsOver" :
+                        
+                        include_once("pages/commandeIsOver/ControllerCommandeIsOver.php");
+                        
+                        $controlCommandeIsOver = new ControllerCommandeIsOver();
+                        $controlCommandeIsOver->includeView();
                         
                         break;
                     

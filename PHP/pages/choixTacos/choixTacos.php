@@ -53,7 +53,7 @@
     { 
 ?>
         <form method="POST" action="index.php?page=choixTacos">
-            <input type="radio" name="button-choix-taille" id="taille1" value="1"/>
+            <input type="radio" name="button-choix-taille" id="taille1" value="1" checked/>
             <label for="taille1">M</label>
             <input type="radio" name="button-choix-taille" id="taille2" value="2"/>
             <label for="taille2">L</label>

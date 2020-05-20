@@ -11,7 +11,7 @@
             $boisson = null;
             
             $state = $connex->prepare("SELECT * FROM Boisson WHERE idBoisson=?");
-            $state->bindParam(1,$idBoisson);
+            $state->bindParam(1, $idBoisson);
             
             $state->execute();
                         
