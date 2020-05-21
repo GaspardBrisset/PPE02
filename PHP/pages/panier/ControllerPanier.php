@@ -2,6 +2,7 @@
     include_once("../PHP/DAO/CommandeManager.php");
     include_once("../PHP/DAO/TacosManager.php");
     include_once("../PHP/DAO/TacosViandeManager.php");
+    include_once("../PHP/DAO/TypeTacosManager.php");
     include_once("../PHP/DAO/TacosSauceManager.php");
     include_once("../PHP/DAO/ViandeManager.php");
     include_once("../PHP/DAO/SauceManager.php");
@@ -256,9 +257,9 @@
             return $tacosSauceIsSet;
         }
         
-        public static function GetSaucesWithTacos($idTacosSauce)
+        public static function GetSaucesWithTacos($idTacos)
         {
-            $tabSauces = TacosSauceManager::findSaucesWithTacos($idTacosSauce);
+            $tabSauces = TacosSauceManager::findSaucesWithTacos($idTacos);
             return $tabSauces;
         }
         
@@ -331,5 +332,30 @@
             $commandeBoisson->setQuantite($newQuantiteBoisson);
             CommandeBoissonManager::updateQuantiteBoisson($commandeBoisson, $_SESSION["idCommande"]);
         }
+        
+        public static function getTypesTacosWithTacos($idTypeTacos)
+        {
+            $tabTypesTacos = TypeTacosManager::findTypeTacos($idTypeTacos);
+            return $tabTypesTacos; 
+        }
+        
+        public static function getQuantiteWithViandeAndTacos($idTacos, $idViande)
+        {
+            $quantiteViande = TacosViandeManager::findQuantiteWithViandeAndTacos($idTacos, $idViande);
+            return $quantiteViande;
+        }
+        
+        public static function getQuantiteWithSauceAndTacos($idTacos, $idSauce)
+        {
+            $quantiteSauce = TacosSauceManager::findQuantiteWithSauceAndTacos($idTacos, $idSauce);
+            return $quantiteSauce;
+        }
+        
+        public static function getQuantiteWithCommandeAndBoisson($idCommande, $idBoisson)
+        {
+            $quantiteBoisson = CommandeBoissonManager::findQuantiteWithCommandeAndBoisson($idCommande, $idBoisson);
+            return $quantiteBoisson;
+        }
+        
     }
 ?>

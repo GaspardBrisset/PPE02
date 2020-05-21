@@ -1,11 +1,18 @@
 
     
-    <div class="button-container-retour">
-        <a class="button" id="button-retour" href="index.php?page=accueil">
-            Retour
-        </a>
-    </div>
-    
+<div class="button-container-retour">
+    <a class="button" id="button-retour" href="index.php?page=accueil">
+        Retour
+    </a>
+</div>
+
+<?php
+    if(ControllerContact::newMessage()==true)
+    {
+        echo "Message envoyé !";
+
+    }
+?>
 <div class="contact-titre-container">
     <div class="contact-titre">Une question ?</div>
 </div>

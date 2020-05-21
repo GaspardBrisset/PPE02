@@ -12,7 +12,7 @@
     }
     else
     {
-        echo $_SESSION["idCommande"];
+        //echo $_SESSION["idCommande"];
     }
     
     
@@ -96,7 +96,7 @@
         {
             $idTacosPanier = $tacosPanier->getIdTacos();
             $idTypeTacosPanier = $tacosPanier->getIdTypeTacos();
-            $typeTacosPanier = TypeTacosManager::findTypeTacos($idTypeTacosPanier);
+            $typeTacosPanier = ControllerPanier::getTypesTacosWithTacos($idTypeTacosPanier);
 ?>
             <tr>
                 <td> <div class="panier-cellule"> <?php echo "Tacos taille ".$typeTacosPanier->getTaille();?> </div> </td>
@@ -113,11 +113,11 @@
             </tr>
 <?php 
             $prixCommande = $prixCommande + $typeTacosPanier->getPrixTaille();
-            $tabViandesPanier = TacosViandeManager::findViandesWithTacos($idTacosPanier);
+            $tabViandesPanier = ControllerPanier::GetViandesWithTacos($idTacosPanier);
                 
             foreach($tabViandesPanier as $viandePanier)
             {
-                $quantiteViandePanier = TacosViandeManager::findQuantiteWithViandeAndTacos($idTacosPanier, $viandePanier->getIdViande());
+                $quantiteViandePanier = ControllerPanier::getQuantiteWithViandeAndTacos($idTacosPanier, $viandePanier->getIdViande());
 ?>  
                 <tr>
                     <td> <div class="panier-cellule"> <?php echo "Viande ".$viandePanier->getNomViande(); ?> </div> </td>
@@ -129,11 +129,11 @@
 <?php
             }
 
-            $tabSaucesPanier = TacosSauceManager::findSaucesWithTacos($idTacosPanier);
+            $tabSaucesPanier = ControllerPanier::GetSaucesWithTacos($idTacosPanier);
                 
             foreach($tabSaucesPanier as $saucePanier)
             {
-                $quantiteSaucePanier = TacosSauceManager::findQuantiteWithSauceAndTacos($idTacosPanier, $saucePanier->getIdSauce());
+                $quantiteSaucePanier = ControllerPanier::getQuantiteWithSauceAndTacos($idTacosPanier, $saucePanier->getIdSauce());
 ?>
                 <tr>
                     <td> <div class="panier-cellule"> <?php echo "Sauce ".$saucePanier->getNomSauce();?> </div> </td>
@@ -150,7 +150,7 @@
     
         foreach($tabBoissonsPanier as $boissonPanier)
         {
-            $quantiteBoissonPanier = CommandeBoissonManager::findQuantiteWithCommandeAndBoisson($commandePanier->getIdCommande(), $boissonPanier->getIdBoisson());
+            $quantiteBoissonPanier = ControllerPanier::getQuantiteWithCommandeAndBoisson($commandePanier->getIdCommande(), $boissonPanier->getIdBoisson());
 ?>
             <tr>
                 <td> <div class="panier-cellule"><?php echo $boissonPanier->getNomBoisson();?> </div> </td>
