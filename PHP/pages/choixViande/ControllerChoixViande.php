@@ -23,8 +23,6 @@
         
         public static function ViandesSession()
         {
-            //prof : mettre en session un tableau avec les 3 viandes
-            
             $idViande1 = null;
             $idViande2 = null;
             $idViande3 = null;
@@ -35,19 +33,19 @@
             
             $viandeSessionIsSet = false;
             
-            if(!empty($_POST["button-choix-viande1"])) // ou isset
+            if(!empty($_POST["button-choix-viande1"]))
             {
                 $idViande1 = $_POST["button-choix-viande1"];
                 $_SESSION["idViande1"] = $idViande1; 
                 
                 $viandeSessionIsSet = true;
                 
-                if(!empty($_POST["button-choix-viande2"])) // ou isset
+                if(!empty($_POST["button-choix-viande2"])) 
                 {
                     $idViande2 = $_POST["button-choix-viande2"];
                     $_SESSION["idViande2"] = $idViande2; 
                     
-                    if(!empty($_POST["button-choix-viande3"])) // ou isset
+                    if(!empty($_POST["button-choix-viande3"])) 
                     {
                         $idViande3 = $_POST["button-choix-viande3"];
                         $_SESSION["idViande3"] = $idViande3; 

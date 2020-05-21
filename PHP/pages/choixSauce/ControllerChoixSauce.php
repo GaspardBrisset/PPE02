@@ -20,9 +20,8 @@
             exit;
         }
         
-        public static function SaucesSession() //mettre dans le controller de viande
+        public static function SaucesSession() 
         {   
-            //prof : mettre en session un tableau avec les sauces
             
             $idSauce1 = null;
             $idSauce2 = null;
@@ -32,14 +31,14 @@
             
             $sauceSessionIsSet = false;
             
-            if(!empty($_POST["button-choix-sauce1"])) // ou isset
+            if(!empty($_POST["button-choix-sauce1"])) 
             {
                 $idSauce1 = $_POST["button-choix-sauce1"];
                 $_SESSION["idSauce1"] = $idSauce1; 
                 
                 $sauceSessionIsSet = true;
                 
-                if(!empty($_POST["button-choix-sauce2"])) // ou isset
+                if(!empty($_POST["button-choix-sauce2"])) 
                 {
                     $idSauce2 = $_POST["button-choix-sauce2"];
                     $_SESSION["idSauce2"] = $idSauce2; 

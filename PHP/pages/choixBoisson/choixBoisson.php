@@ -73,12 +73,6 @@
 <?php
     }
   
-/*
-if(ControllerChoixBoisson::boissonSession()==true)
-{
-    ControllerChoixBoisson::redirectPanier();
-}
-*/
 
     if(ControllerChoixBoisson::boissonSession()==true)
     {

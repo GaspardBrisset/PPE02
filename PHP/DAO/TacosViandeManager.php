@@ -45,32 +45,6 @@
             return $tabViandes;
         }
         
-        /*
-        public static function findTacosViandeWithTacos($idTacos) //changer nom ? pour findTacosViande =>all car renvoie plusieurs
-        {
-            $connex = DatabaseLinker::getConnexion();
-            $tacosViande = null;
-            
-            $state = $connex->prepare("SELECT * FROM TacosViande WHERE idTacos=?");
-            $state->bindParam(1,$idTacos);
-            
-            $state->execute();
-                        
-            $resultats = $state->fetchAll();
-                    
-            if(sizeof($resultats)>0)
-            {
-                $result = $resultats[0];
-                $tacosViande = new TacosViande(); 
-                
-                $tacosViande->setIdTacos($result["idTacos"]);
-                $tacosViande->setIdViande($result["idViande"]);
-                $tacosViande->setQuantite($result["quantite"]);
-            }
-            
-            return $tacosViande;
-        }
-        */
         
         public static function findQuantiteWithViandeAndTacos($idTacos, $idViande)
         {

@@ -1,7 +1,4 @@
 <?php 
-    //session_destroy();
-    //session_unset();
-    //unset($_SESSION["idCommande"]);
     if(empty($_SESSION))
     {
         session_name("commande_tacos");
@@ -143,8 +140,6 @@
                         
                         $controlChoixBoisson = new ControllerChoixBoisson();
                         $controlChoixBoisson->includeView();
-                        
-                        
                         
                         break;
                     

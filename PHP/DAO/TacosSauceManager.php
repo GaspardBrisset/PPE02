@@ -45,32 +45,6 @@
             return $tabSauces;
         }
         
-        /*
-        public static function findTacosSauce($idTacos)
-        {
-            $connex = DatabaseLinker::getConnexion();
-            $tacosSauce = null;
-            
-            $state = $connex->prepare("SELECT * FROM TacosSauce WHERE idTacos=?");
-            $state->bindParam(1,$idTacos);
-            
-            $state->execute();
-                        
-            $resultats = $state->fetchAll();
-                    
-            if(sizeof($resultats)>0)
-            {
-                $result = $resultats[0];
-                $tacosSauce = new TacosSauce(); 
-                
-                $tacosSauce->setIdTacos($result["idTacos"]);
-                $tacosSauce->setIdSauce($result["idSauce"]);
-                $tacosSauce->setQuantite($result["quantite"]);
-            }
-            
-            return $tacosSauce;
-        }
-        */
         
         public static function findQuantiteWithSauceAndTacos($idTacos, $idSauce)
         {

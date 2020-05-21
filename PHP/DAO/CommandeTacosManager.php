@@ -70,34 +70,7 @@
             }
             
             return $tacos;
-        }
-        
-        
-        /*
-        public static function findCommandeTacosWithCommande($idCommande)
-        {
-            $connex = DatabaseLinker::getConnexion();
-            $commandeTacos = null;
-            
-            $state = $connex->prepare("SELECT * FROM CommandeTacos WHERE idCommande=?");
-            $state->bindParam(1,$idCommande);
-            
-            $state->execute();
-                        
-            $resultats = $state->fetchAll();
-                    
-            if(sizeof($resultats)>0)
-            {
-                $result = $resultats[0];
-                $commandeTacos = new CommandeTacos(); 
-                
-                $commandeTacos->setIdCommande($result["idCommande"]);
-                $commandeTacos->setIdTacos($result["idTacos"]);
-            }
-            
-            return $commandeTacos;
-        }
-        */
+        }        
         
         
         public static function deleteCommandeTacos($idTacos)

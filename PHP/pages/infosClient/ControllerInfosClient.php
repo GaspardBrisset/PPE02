@@ -41,11 +41,6 @@
         }
         
         
-        public static function clientSession()
-        {
-            
-        }
-        
         public static function redirectCommandeIsOver()
         {
             header('Location: index.php?page=commandeIsOver');

@@ -72,7 +72,6 @@
         {
             $tacosInCommandeIsDeleted = false;
             CommandeTacosManager::deleteCommandeTacos($idTacos);
-            //echo "idCommande : ".$_SESSION["idCommande"];
             
             $tacos = CommandeTacosManager::findTacosWithCommandeAndTacos($_SESSION["idCommande"], $idTacos);
             

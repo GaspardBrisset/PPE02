@@ -72,8 +72,6 @@
         }
         
         
-        
-        
         public static function insertTacosViande($idTacos)
         {
             $tacosViandeIsSet = false;

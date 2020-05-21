@@ -44,67 +44,67 @@
     {
         $tabSauces=ControllerChoixSauce::getSauces();
 ?>
-<div class="tacos-form-container">
-    <form method="POST" action="index.php?page=choixSauce" class="tacos-form">
-        <div class="tacos-form-block-top" id='sauce-block-top'>
+        <div class="tacos-form-container">
+            <form method="POST" action="index.php?page=choixSauce" class="tacos-form">
+                <div class="tacos-form-block-top" id='sauce-block-top'>
             
 <?php
             if($idTypeTacos>=1)
             {
                 //idTypeTacos=1 => taille=M => 1 sauce => 1 ligne de boutons radio
-                ?>
-                <div class="ligne-sauce">
-                    <?php
-                foreach($tabSauces as $sauce)
-                {
 ?>
-                    <div class="radio-ligne">
-                    <input class="radio-button" type="radio" 
-                           name="button-choix-sauce1" 
-                           id='<?php echo "sauce".$sauce->getIdSauce(); ?>' 
-                           value='<?php echo $sauce->getIdSauce(); ?>'
-                           <?php if($sauce->getIdSauce()==1){echo " checked";}?>/>
-
-                    <label for='<?php echo "sauce".$sauce->getIdSauce(); ?>'>
-                        <?php echo $sauce->getNomSauce(); ?></label>
-                    </div>
+                <div class="ligne-sauce">
 <?php
-                } 
-                ?>
+                    foreach($tabSauces as $sauce)
+                    {
+?>
+                        <div class="radio-ligne">
+                            <input class="radio-button" type="radio" 
+                                   name="button-choix-sauce1" 
+                                   id='<?php echo "sauce".$sauce->getIdSauce(); ?>' 
+                                   value='<?php echo $sauce->getIdSauce(); ?>'
+                                   <?php if($sauce->getIdSauce()==1){echo " checked";}?>/>
+
+                            <label for='<?php echo "sauce".$sauce->getIdSauce(); ?>'>
+                                <?php echo $sauce->getNomSauce(); ?></label>
+                        </div>
+<?php
+                    } 
+?>
                 </div>
-                    <?php
+<?php
             }
             
             if($idTypeTacos>=2)
             {
                 //idTypeTacos=2 ou 3 => taille=L ou XL => 2 sauces => 2 lignes de boutons radio
-                ?>
-                <div class="ligne-sauce">
-                    <?php
-                foreach($tabSauces as $sauce)
-                {
 ?>
-                    <div class="radio-ligne">
-                        <input class="radio-button" type="radio" 
-                           name="button-choix-sauce2" 
-                           id='<?php echo "sauce".$sauce->getIdSauce(); ?>' 
-                           value='<?php echo $sauce->getIdSauce(); ?>'
-                           <?php if($sauce->getIdSauce()==1){echo " checked";}?>/>
-
-                    <label for='<?php echo "sauce".$sauce->getIdSauce(); ?>'>
-                        <?php echo $sauce->getNomSauce(); ?></label>
-                    </div>
+                <div class="ligne-sauce">
 <?php
-                } 
-                ?>
+                    foreach($tabSauces as $sauce)
+                    {
+?>
+                        <div class="radio-ligne">
+                            <input class="radio-button" type="radio" 
+                               name="button-choix-sauce2" 
+                               id='<?php echo "sauce".$sauce->getIdSauce(); ?>' 
+                               value='<?php echo $sauce->getIdSauce(); ?>'
+                               <?php if($sauce->getIdSauce()==1){echo " checked";}?>/>
+
+                            <label for='<?php echo "sauce".$sauce->getIdSauce(); ?>'>
+                                <?php echo $sauce->getNomSauce(); ?></label>
+                        </div>
+<?php
+                    } 
+?>
                 </div>
-                    <?php
+<?php
             }
 ?>
+                </div>
+                <input class="button" type="submit" value="Valider"/>
+            </form>
         </div>
-        <input class="button" type="submit" value="Valider"/>
-        </form>
-    </div>
 <?php
     }
     

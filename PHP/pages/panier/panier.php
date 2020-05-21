@@ -3,8 +3,6 @@
     $tacosSauceIsSet = false;
     $boissonAndQuantiteIsSet = false;
     $prixCommande = 0;
-    //unset($_SESSION["idCommande"]);
-    //ControllerPanier::newCommande();
     
     if(!isset($_SESSION["idCommande"]))
     {
@@ -18,17 +16,17 @@
     
     if(isset($_SESSION["idTypeTacos"]) && isset($_SESSION["idViande1"]) && isset($_SESSION["idSauce1"]))
     {
-        $tacos = ControllerPanier::insertTacos($_SESSION["idTypeTacos"]); //Table Tacos (idTacos, idTypeTacos)
+        $tacos = ControllerPanier::insertTacos($_SESSION["idTypeTacos"]); 
         $idTacos = $tacos->getIdTacos();
         
-        ControllerPanier::insertCommandeTacos($idTacos); //Table CommandeTacos(idCommande, idTacos)
+        ControllerPanier::insertCommandeTacos($idTacos); 
         
-        if(ControllerPanier::insertTacosViande($idTacos)==true) //séparer le renvoie true/false et l'insertion ??
+        if(ControllerPanier::insertTacosViande($idTacos)==true) 
         {
             $tacosViandeIsSet=true;
         }
         
-        if(ControllerPanier::insertTacosSauce($idTacos)==true) //séparer le renvoie true/false et l'insertion ??
+        if(ControllerPanier::insertTacosSauce($idTacos)==true)
         {
             $tacosSauceIsSet = true;
         } 

@@ -29,7 +29,7 @@
             
             $typeTacosIsSet = false;
             
-            if(!empty($_POST["button-choix-taille"])) // ou isset
+            if(!empty($_POST["button-choix-taille"])) 
             {
                 $idTypeTacos = $_POST["button-choix-taille"];
                 $_SESSION["idTypeTacos"] = $idTypeTacos;
