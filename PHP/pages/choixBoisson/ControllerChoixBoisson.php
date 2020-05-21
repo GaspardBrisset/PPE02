@@ -1,13 +1,13 @@
 <?php
-    include_once("/DAO/BoissonManager.php");
-    include_once("/DTO/CommandeBoisson.php");
-    include_once("/DAO/CommandeBoissonManager.php");
+    include_once("../PHP/DAO/BoissonManager.php");
+    include_once("../PHP/DTO/CommandeBoisson.php");
+    include_once("../PHP/DAO/CommandeBoissonManager.php");
 
     class ControllerChoixBoisson
     {
         public static function includeView()
         {
-            include_once("/pages/choixBoisson/choixBoisson.php");
+            include_once("choixBoisson.php");
         }
         
         public static function redirectPanier()

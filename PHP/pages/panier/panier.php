@@ -1,18 +1,4 @@
 <?php
-    include_once("/DAO/CommandeManager.php");
-    include_once("/DAO/TacosManager.php");
-    include_once("/DAO/TacosViandeManager.php");
-    include_once("/DAO/TacosSauceManager.php");
-    include_once("/DAO/ViandeManager.php");
-    include_once("/DAO/SauceManager.php");
-    include_once("/DTO/Tacos.php");
-    include_once("/DTO/Commande.php");
-    include_once("/DAO/CommandeTacosManager.php");
-    include_once("/DAO/TypeTacosManager.php");
-    include_once("/DAO/CommandeBoissonManager.php");
-
-
-    
     $tacosViandeIsSet = false;
     $tacosSauceIsSet = false;
     $boissonAndQuantiteIsSet = false;

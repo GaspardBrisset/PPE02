@@ -1,8 +1,8 @@
 <?php
 
-    include_once("/tools/DatabaseLinker.php");
-    include_once("/DTO/CommandeBoisson.php");
-    include_once("/DAO/BoissonManager.php");
+    include_once("../PHP/tools/DatabaseLinker.php");
+    include_once("../PHP/DTO/CommandeBoisson.php");
+    include_once("../PHP/DAO/BoissonManager.php");
 
     class CommandeBoissonManager
     {

@@ -1,13 +1,13 @@
 <?php
 
-    include_once("/DAO/ClientManager.php");
-    include_once("/DAO/MessageManager.php");
+    include_once("../PHP/DAO/ClientManager.php");
+    include_once("../PHP/DAO/MessageManager.php");
 
     class ControllerContact
     {
         public static function includeView()
         {
-            include_once("/pages/contact/contact.php");
+            include_once("contact.php");
         }
         
         public static function newMessage()

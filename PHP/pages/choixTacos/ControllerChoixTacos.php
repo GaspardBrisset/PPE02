@@ -1,12 +1,12 @@
 <?php
-    include_once("/DAO/TypeTacosManager.php");
+    include_once("../PHP/DAO/TypeTacosManager.php");
 
     class ControllerChoixTacos
     {
             
         public static function includeView()
         {
-            include_once("/pages/choixTacos/choixTacos.php");
+            include_once("choixTacos.php");
         }
         
         public static function getTypesTacos()

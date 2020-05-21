@@ -1,20 +1,20 @@
 <?php
-    include_once("/DAO/CommandeManager.php");
-    include_once("/DAO/TacosManager.php");
-    include_once("/DAO/TacosViandeManager.php");
-    include_once("/DAO/TacosSauceManager.php");
-    include_once("/DAO/ViandeManager.php");
-    include_once("/DAO/SauceManager.php");
-    include_once("/DTO/Tacos.php");
-    include_once("/DTO/Commande.php");
-    include_once("/DAO/CommandeTacosManager.php");
-    include_once("/DAO/CommandeBoissonManager.php");
+    include_once("../PHP/DAO/CommandeManager.php");
+    include_once("../PHP/DAO/TacosManager.php");
+    include_once("../PHP/DAO/TacosViandeManager.php");
+    include_once("../PHP/DAO/TacosSauceManager.php");
+    include_once("../PHP/DAO/ViandeManager.php");
+    include_once("../PHP/DAO/SauceManager.php");
+    include_once("../PHP/DTO/Tacos.php");
+    include_once("../PHP/DTO/Commande.php");
+    include_once("../PHP/DAO/CommandeTacosManager.php");
+    include_once("../PHP/DAO/CommandeBoissonManager.php");
 
     class ControllerPanier
     {
         public static function includeView()
         {
-            include_once("/pages/panier/panier.php");
+            include_once("panier.php");
         }
         
         

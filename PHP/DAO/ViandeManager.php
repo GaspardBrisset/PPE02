@@ -1,7 +1,7 @@
 <?php
 
-    include_once("/tools/DatabaseLinker.php");
-    include_once("/DTO/Viande.php");
+    include_once("../PHP/tools/DatabaseLinker.php");
+    include_once("../PHP/DTO/Viande.php");
 
     class ViandeManager
     {

@@ -1,12 +1,12 @@
 <?php
-    include_once("/DAO/ViandeManager.php");
+    include_once("../PHP/DAO/ViandeManager.php");
 
     class ControllerChoixViande
     {
             
         public static function includeView()
         {
-            include_once("/pages/choixViande/choixViande.php");
+            include_once("choixViande.php");
         }
         
         public static function getViandes()

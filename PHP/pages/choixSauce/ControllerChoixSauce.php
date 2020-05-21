@@ -1,11 +1,11 @@
 <?php
-    include_once("/DAO/SauceManager.php");
+    include_once("../PHP/DAO/SauceManager.php");
 
     class ControllerChoixSauce
     {
         public static function includeView()
         {
-            include_once("/pages/choixSauce/choixSauce.php");
+            include_once("choixSauce.php");
         }
         
         public static function getSauces()

@@ -1,7 +1,7 @@
 <?php
 
-    include_once("/DAO/ClientManager.php");
-    include_once("/DAO/CommandeManager.php");
+    include_once("../PHP/DAO/ClientManager.php");
+    include_once("../PHP/DAO/CommandeManager.php");
 
     date_default_timezone_set('Europe/Paris');
     
@@ -9,7 +9,7 @@
     {
         public static function includeView()
         {
-            include_once("/pages/commandeIsOver/commandeIsOver.php");
+            include_once("commandeIsOver.php");
         }
         
         

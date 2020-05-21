@@ -1,7 +1,4 @@
 <?php
-    include_once("/DTO/TypeTacos.php");
-    include_once("/DAO/TypeTacosManager.php");
-
     $tabTypeTacos = ControllerChoixTacos::getTypesTacos();
     
 ?>

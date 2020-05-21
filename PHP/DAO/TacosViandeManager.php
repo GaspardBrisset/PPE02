@@ -1,8 +1,7 @@
 <?php
 
-    include_once("/tools/DatabaseLinker.php");
-    //include_once("/DTO/Tacos.php");
-    include_once("/DTO/TacosViande.php");
+    include_once("../PHP/tools/DatabaseLinker.php");
+    include_once("../PHP/DTO/TacosViande.php");
 
     class TacosViandeManager
     {

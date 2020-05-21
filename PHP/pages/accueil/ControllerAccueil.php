@@ -1,14 +1,14 @@
 <?php
-    include_once("/DAO/TypeTacosManager.php");
-    include_once("/DAO/ViandeManager.php");
-    include_once("/DAO/SauceManager.php");
-    include_once("/DAO/BoissonManager.php");
+    include_once("../PHP/DAO/TypeTacosManager.php");
+    include_once("../PHP/DAO/ViandeManager.php");
+    include_once("../PHP/DAO/SauceManager.php");
+    include_once("../PHP/DAO/BoissonManager.php");
 
     class ControllerAccueil
     {
         public static function includeView()
         {
-            include_once("/pages/accueil/accueil.php");
+            include_once("accueil.php");
         }
         
         public static function redirectTacos()

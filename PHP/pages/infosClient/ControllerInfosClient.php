@@ -1,15 +1,12 @@
 <?php
+    include_once("../PHP/DAO/ClientManager.php");
+    include_once("../PHP/DAO/CommandeManager.php");
 
-    include_once("/DAO/ClientManager.php");
-    include_once("/DAO/CommandeManager.php");
-
-    
-    
     class ControllerInfosClient
     {
         public static function includeView()
         {
-            include_once("/pages/infosClient/infosClient.php");
+            include_once("infosClient.php");
         }
 
         public static function newClient()

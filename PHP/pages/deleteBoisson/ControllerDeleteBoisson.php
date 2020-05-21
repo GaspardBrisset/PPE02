@@ -1,20 +1,13 @@
 <?php
-    include_once("/DAO/CommandeManager.php");
-    include_once("/DAO/TacosManager.php");
-    include_once("/DAO/TacosViandeManager.php");
-    include_once("/DAO/TacosSauceManager.php");
-    include_once("/DAO/ViandeManager.php");
-    include_once("/DAO/SauceManager.php");
-    include_once("/DTO/Tacos.php");
-    include_once("/DTO/Commande.php");
-    include_once("/DAO/CommandeTacosManager.php");
-    include_once("/DAO/CommandeBoissonManager.php");
+    include_once("../PHP/DAO/CommandeManager.php");
+    include_once("../PHP/DTO/Commande.php");
+    include_once("../PHP/DAO/CommandeBoissonManager.php");
 
     class ControllerDeleteBoisson
     {
         public static function includeView()
         {
-            include_once("/pages/deleteBoisson/deleteBoisson.php");
+            include_once("deleteBoisson.php");
         }
         
         public static function redirectPanier()
