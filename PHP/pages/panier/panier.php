@@ -17,7 +17,7 @@
     $tacosSauceIsSet = false;
     $boissonAndQuantiteIsSet = false;
     $prixCommande = 0;
-    
+    //unset($_SESSION["idCommande"]);
     //ControllerPanier::newCommande();
     
     if(!isset($_SESSION["idCommande"]))
@@ -26,7 +26,7 @@
     }
     else
     {
-        //echo $_SESSION["idCommande"];
+        echo $_SESSION["idCommande"];
     }
     
     

@@ -1,7 +1,7 @@
 <?php 
     //session_destroy();
     //session_unset();
-    
+    //unset($_SESSION["idCommande"]);
     if(empty($_SESSION))
     {
         session_name("commande_tacos");
@@ -201,6 +201,10 @@
             </div>
             
         </div>
-
+        
+        <div class="bandeau-bottom">
+            <span>Site de commande de tacos réalisé par Gaspard Brisset et Perrine Delahay - mai 2020</span>
+        </div>
+        
     </body>
 </html>

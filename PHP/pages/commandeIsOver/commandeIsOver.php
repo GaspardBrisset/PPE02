@@ -28,6 +28,7 @@
         unset($_SESSION["idCommande"]);
         unset($_SESSION["idClient"]);
         unset($_SESSION["prixTotal"]);
+        session_unset();
     }
     
 ?>
