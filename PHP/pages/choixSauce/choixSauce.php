@@ -46,7 +46,7 @@
 ?>
 <div class="tacos-form-container">
     <form method="POST" action="index.php?page=choixSauce" class="tacos-form">
-        <div class="tacos-form-block-top">
+        <div class="tacos-form-block-top" id='sauce-block-top'>
             
 <?php
             if($idTypeTacos>=1)

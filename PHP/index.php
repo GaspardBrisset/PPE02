@@ -21,8 +21,10 @@
         <link rel="stylesheet" href="pages/panier/panier.css"/>
         <link rel="stylesheet" href="pages/choixTacos/choixTacos.css"/>
         <link rel="stylesheet" href="pages/choixViande/choixViande.css"/>
-        
+        <link rel="stylesheet" href="pages/choixSauce/choixSauce.css"/>
         <link rel="stylesheet" href="pages/choixBoisson/choixBoisson.css"/>
+        
+        <link rel="stylesheet" href="pages/commandeIsOver/commandeIsOver.css"/>
         <link rel="shortcut icon" type="ico" href="images/general/favicon.ico"/>
           		
     </head>
