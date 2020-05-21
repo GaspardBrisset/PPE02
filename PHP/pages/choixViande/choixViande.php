@@ -1,67 +1,110 @@
 <?php
-    /*session_unset();
-    session_destroy();*/
 
-    include_once("/DTO/Viande.php");
-    include_once("/DAO/ViandeManager.php");
-
-    //echo $_SESSION["idTypeTacos"];
     $tailleTacos = $_SESSION["idTypeTacos"];
+    
+?>
+    <div class="carte-section">
+        
+        <div class="carte-section-titre">
+            Choisis ta viande
+        </div>
+        
+        <div class="carte-section-choix">
+<?php
+        $tabViandes = ControllerChoixViande::getViandes();
+        foreach($tabViandes as $viande)
+        {
+?>
+            <div class="carte-section-element">
+
+                <img class="element-image" src="images/viandes/<?php echo $viande->getIdViande().".png";?>"/>
+                <div class="element-titre"><?php echo $viande->getNomViande();?></div>
+
+            </div>
+<?php
+        }
+?>
+        </div>
+        
+    </div>
+    
+    <?php
     
     if(!empty($tailleTacos) && !isset($_POST["button-choix-viande1"]))
     {
         $tabViandes=ControllerChoixViande::getViandes();
+        
 ?>
-        <form method="POST" action="index.php?page=choixViande">
+    <div class="tacos-form-container">
+        <form method="POST" action="index.php?page=choixViande" class="tacos-form" id="viande-form">
+            <div class="tacos-form-block-top" id="choix-viande">
 <?php
-            if($tailleTacos>=1)
-            {
-                //idTypeTacos=2 => taille=L => 2 viandes => 2 lignes de boutons radio
-                echo "Choix viande n°1: "."<br>";
-                foreach($tabViandes as $viande)
+                if($tailleTacos>=1)
                 {
+                    //idTypeTacos=2 => taille=L => 2 viandes => 2 lignes de boutons radio
+                    ?>
+                <div class="ligne-viande">
+                    
+                <?php
+                    foreach($tabViandes as $viande)
+                    {
 ?>
-                    <input type="radio" 
-                           name="button-choix-viande1" 
-                           id='<?php echo "viande".$viande->getIdViande(); ?>' 
-                           value='<?php echo $viande->getIdViande(); ?>'
-                           <?php if($viande->getIdViande()==1){echo " checked";}?>/>
+                    <div class="radio-ligne">
+                        <input class="radio-button" type="radio" 
+                               name="button-choix-viande1" 
+                               id='<?php echo "viande".$viande->getIdViande(); ?>' 
+                               value='<?php echo $viande->getIdViande(); ?>'
+                               <?php if($viande->getIdViande()==1){echo " checked";}?>/>
 
-                    <label for='<?php echo "viande".$viande->getIdViande(); ?>'>
-                        <?php echo $viande->getNomViande(); ?></label>
+                        <label for='<?php echo "viande".$viande->getIdViande(); ?>'>
+                            <?php echo $viande->getNomViande(); ?></label>
+                        </div>
 <?php
                 } 
-                echo "<br>";
+                ?>
+                </div>
+                <?php
+                
             }
 
             if($tailleTacos>=2)
             {
                 //idTypeTacos=2 => taille=L => 2 viandes => 2 lignes de boutons radio
-                echo "Choix viande n°2: "."<br>";
+                ?>
+                <div class="ligne-viande">
+                <?php
                 foreach($tabViandes as $viande)
                 {
 ?>
-                    <input type="radio" 
+                <div class="radio-ligne">
+                    <input class="radio-button" type="radio" 
                            name="button-choix-viande2" 
                            id='<?php echo "viande".$viande->getIdViande(); ?>' 
                            value='<?php echo $viande->getIdViande(); ?>'
                            <?php if($viande->getIdViande()==1){echo " checked";}?>/>
 
-                    <label for='<?php echo "viande".$viande->getIdViande(); ?>'>
+                    <label class="radio-label" for='<?php echo "viande".$viande->getIdViande(); ?>'>
                         <?php echo $viande->getNomViande(); ?></label>
+                </div>
 <?php
                 } 
-                echo "<br>";
+?>
+                </div>
+<?php
+                
             }
             
             if($tailleTacos==3)
             {
                 //idTypeTacos=3 => taille=XL => 3 viandes => 3 lignes de boutons radio
-                echo "Choix viande n°3: "."<br>";
+                ?>
+                <div class="ligne-viande">
+                <?php
                 foreach($tabViandes as $viande)
                 {
 ?>
-                    <input type="radio" 
+                <div class="radio-ligne">
+                    <input class="radio-button" type="radio" 
                            name="button-choix-viande3" 
                            id='<?php echo "viande".$viande->getIdViande(); ?>' 
                            value='<?php echo $viande->getIdViande(); ?>'
@@ -69,19 +112,18 @@
 
                     <label for='<?php echo "viande".$viande->getIdViande(); ?>'>
                         <?php echo $viande->getNomViande(); ?></label>
+                </div>
 <?php
                 } 
-                echo "<br>";
-            }
-            
-            
+                ?>
+                </div>
+<?php
+            }        
 ?>
-            
-            <!--<input type="radio" name="button-choix-viande" id="viande2" value="2"/>
-            <label for="viande2">Steak</label> -->
-            
-            <input type="submit" value="Valider"/>
+            </div>
+                    <input class="button" type="submit" value="Valider"/>
         </form>
+        </div>
 <?php
     }
     

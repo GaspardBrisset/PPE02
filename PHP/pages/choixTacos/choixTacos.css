@@ -1,0 +1,48 @@
+.tacos-form-titre
+{
+    width: 100%;
+}
+
+.tacos-form-container
+{
+    padding-top: 30px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+}
+
+.tacos-form
+{
+    display: flex;
+    padding: 10px;
+    flex-wrap: wrap;
+    width: 50%;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tacos-form-block-top
+{
+    display: flex;
+    justify-content: space-between;
+    width:50%;
+}
+
+
+.radio-ligne
+{
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.radio-button /*input[type=radio]*/
+{
+    cursor: pointer;
+    margin: 3px 10px 0px 10px;
+    width: 20px;
+    height: 20px;
+}

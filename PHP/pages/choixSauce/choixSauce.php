@@ -1,21 +1,43 @@
 <?php
-    
-    echo "Session idTypeTacos: ".$_SESSION["idTypeTacos"]."<br>";
     $idTypeTacos = $_SESSION["idTypeTacos"];
-    echo "Session idViande1: ".$_SESSION["idViande1"]."<br>"; 
     $idViande1 = $_SESSION["idViande1"];
-    
     if(isset($_SESSION["idViande2"]))
     {
-        echo "Session idViande2: ".$_SESSION["idViande2"]."<br>";
         $idViande2 = $_SESSION["idViande2"];
     }
     
     if(isset($_SESSION["idViande3"]))
     {
-        echo "Session idViande3: ".$_SESSION["idViande3"]."<br>";
         $idViande3 = $_SESSION["idViande3"];
     }
+    
+      
+?>
+    <div class="carte-section">
+    
+        <div class="carte-section-titre">
+            Choisis ta sauce
+        </div>
+        
+        <div class="carte-section-choix">
+<?php
+        $tabSauces = ControllerChoixSauce::getSauces();
+        foreach($tabSauces as $sauce)
+        {
+?>
+            <div class="carte-section-element">
+
+                <div class="element-titre"><?php echo $sauce->getNomSauce();?></div>
+
+            </div>
+<?php
+        }
+?>
+        </div>
+        
+    </div>
+    
+    <?php
     
 
     if(!empty($idViande1) && !empty($idTypeTacos) && !isset($_POST["button-choix-sauce1"]))

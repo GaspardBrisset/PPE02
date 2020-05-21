@@ -5,62 +5,65 @@
     $tabTypeTacos = ControllerChoixTacos::getTypesTacos();
     
 ?>
-    <table>
-
-        <tr>
-            <th>Taille</th>
-            <th>Viandes</th>
-            <th>Sauces</th>
-            <th>Prix</th>
-        </tr>
+   <div class="carte-container" id="carte">
     
+    <div class="carte-section">
+        
+        <div class="carte-section-titre">
+            Choisis ta taille
+        </div>
+        
+        <div class="carte-section-choix">
 <?php
-
-        foreach($tabTypeTacos as $typeTacos)
+        $tabTypesTacos = ControllerChoixTacos::getTypesTacos();
+        foreach($tabTypesTacos as $typeTacos)
         {
 ?>
-            <tr>
-<?php
-            echo "<td>".$typeTacos->getTaille()."</td>";
+            <div class="carte-section-element">
 
-            if($typeTacos->getTaille()=="M")
-            {
-                echo "<td> 1 </td>";
-                echo "<td> 1 </td>";
-            }
-            else if($typeTacos->getTaille()=="L")
-            {
-                echo "<td> 2 </td>";
-                echo "<td> 2 </td>";
-            }
-            else if($typeTacos->getTaille()=="XL")
-            {
-                echo "<td> 3 </td>";
-                echo "<td> 2 </td>";
-            }
+                <div class="element-titre"><?php echo $typeTacos->getTaille();?></div>
+                <div class="element-ligne"><?php echo $typeTacos->getIdTypeTacos();?> viande(s)</div>
+                <div class="element-ligne"><?php if($typeTacos->getIdTypeTacos()==1){ echo "1 sauce(s)";}else if($typeTacos->getIdTypeTacos()>1){ echo "2 sauce(s)";} ?></div>
+                <div class="element-ligne"><?php echo $typeTacos->getPrixTaille();?> € </div>
 
-            echo "<td>".$typeTacos->getPrixTaille()."€ </td>";
-?>
-            </tr>
+            </div>
 <?php
         }
-    
 ?>
-    </table>
-<?php
+        </div>
+        
+    </div>
+       <?php
 
     if(!isset($_POST["button-choix-taille"]))
     { 
 ?>
-        <form method="POST" action="index.php?page=choixTacos">
-            <input type="radio" name="button-choix-taille" id="taille1" value="1" checked/>
-            <label for="taille1">M</label>
-            <input type="radio" name="button-choix-taille" id="taille2" value="2"/>
-            <label for="taille2">L</label>
-            <input type="radio" name="button-choix-taille" id="taille3" value="3"/>
-            <label for="taille3">XL</label>
-            <input type="submit" value="Valider"/>
-        </form>
+        <div class="tacos-form-container">
+            
+            <form method="POST" action="index.php?page=choixTacos" class="tacos-form">
+                <div class="tacos-form-block-top">
+
+                    <div class="radio-ligne">
+                        <input class="radio-button" type="radio" name="button-choix-taille" id="taille1" value="1" checked/>
+                        <label for="taille1">M</label>
+                    </div>
+
+                    <div class="radio-ligne">
+                        <input class="radio-button"  type="radio" name="button-choix-taille" id="taille2" value="2"/>
+                        <label for="taille2">L</label>
+                    </div>
+
+                    <div class="radio-ligne">
+                        <input class="radio-button" type="radio" name="button-choix-taille" id="taille3" value="3"/>
+                        <label for="taille3">XL</label>
+                    </div>
+                    
+                </div>
+                
+                <input class="button"type="submit" value="Valider"/>
+            </form>
+
+        </div>
 <?php
     }
     

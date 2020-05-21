@@ -19,6 +19,8 @@
         <link rel="stylesheet" href="pages/accueil/accueil.css"/>
         <link rel="stylesheet" href="pages/contact/contact.css"/>
         <link rel="stylesheet" href="pages/panier/panier.css"/>
+        <link rel="stylesheet" href="pages/choixTacos/choixTacos.css"/>
+        <link rel="stylesheet" href="pages/choixViande/choixViande.css"/>
         <link rel="shortcut icon" type="ico" href="images/general/favicon.ico"/>
           		
     </head>
@@ -80,11 +82,14 @@
 
                         include_once("pages/accueil/ControllerAccueil.php");
                         
-                        if($_SESSION["isOver"]==true)
+                        if(isset($_SESSION["isOver"]))
                         {
-                            unset($_SESSION["idCommande"]);
-                            session_unset();
-                            $_SESSION["isOver"] = false;
+                            if($_SESSION["isOver"]==true)
+                            {
+                                unset($_SESSION["idCommande"]);
+                                session_unset();
+                                $_SESSION["isOver"] = false;
+                            }
                         }
                         
                         $controlAccueil = new ControllerAccueil();

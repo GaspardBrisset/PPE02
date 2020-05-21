@@ -1,0 +1,16 @@
+#choix-viande
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+#viande-form
+{
+    width: 100%;
+}
+
+.radio-label
+{
+    
+}
