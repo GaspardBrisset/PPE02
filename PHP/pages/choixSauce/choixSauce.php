@@ -44,17 +44,22 @@
     {
         $tabSauces=ControllerChoixSauce::getSauces();
 ?>
-        <form method="POST" action="index.php?page=choixSauce">
+<div class="tacos-form-container">
+    <form method="POST" action="index.php?page=choixSauce" class="tacos-form">
+        <div class="tacos-form-block-top">
             
 <?php
             if($idTypeTacos>=1)
             {
                 //idTypeTacos=1 => taille=M => 1 sauce => 1 ligne de boutons radio
-                echo "Choix sauce n°1: "."<br>";
+                ?>
+                <div class="ligne-sauce">
+                    <?php
                 foreach($tabSauces as $sauce)
                 {
 ?>
-                    <input type="radio" 
+                    <div class="radio-ligne">
+                    <input class="radio-button" type="radio" 
                            name="button-choix-sauce1" 
                            id='<?php echo "sauce".$sauce->getIdSauce(); ?>' 
                            value='<?php echo $sauce->getIdSauce(); ?>'
@@ -62,19 +67,25 @@
 
                     <label for='<?php echo "sauce".$sauce->getIdSauce(); ?>'>
                         <?php echo $sauce->getNomSauce(); ?></label>
+                    </div>
 <?php
                 } 
-                echo "<br>";
+                ?>
+                </div>
+                    <?php
             }
             
             if($idTypeTacos>=2)
             {
                 //idTypeTacos=2 ou 3 => taille=L ou XL => 2 sauces => 2 lignes de boutons radio
-                echo "Choix sauce n°2: "."<br>";
+                ?>
+                <div class="ligne-sauce">
+                    <?php
                 foreach($tabSauces as $sauce)
                 {
 ?>
-                    <input type="radio" 
+                    <div class="radio-ligne">
+                        <input class="radio-button" type="radio" 
                            name="button-choix-sauce2" 
                            id='<?php echo "sauce".$sauce->getIdSauce(); ?>' 
                            value='<?php echo $sauce->getIdSauce(); ?>'
@@ -82,13 +93,18 @@
 
                     <label for='<?php echo "sauce".$sauce->getIdSauce(); ?>'>
                         <?php echo $sauce->getNomSauce(); ?></label>
+                    </div>
 <?php
                 } 
-                echo "<br>";
+                ?>
+                </div>
+                    <?php
             }
 ?>
-            <input type="submit" value="Valider"/>
+        </div>
+        <input class="button" type="submit" value="Valider"/>
         </form>
+    </div>
 <?php
     }
     
@@ -97,4 +113,3 @@
         ControllerChoixSauce::redirectPanier();
     }
 ?>
-    <a href="index.php?page=panier">Retour vers le panier</a>
