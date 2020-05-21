@@ -99,7 +99,7 @@
         <th>Produit</th>
         <th>Quantité</th>
         <th>Prix</th>
-        <th>Total</th>
+        <th>Sous-total</th>
         <th> </th>
     </tr>
     
@@ -113,14 +113,16 @@
             $typeTacosPanier = TypeTacosManager::findTypeTacos($idTypeTacosPanier);
 ?>
             <tr>
-                <td> <?php echo "Tacos taille ".$typeTacosPanier->getTaille();?> </td>
+                <td> <div class="panier-cellule"> <?php echo "Tacos taille ".$typeTacosPanier->getTaille();?> </div> </td>
                 <td> </td>
-                <td> <?php echo $typeTacosPanier->getPrixTaille().",00 €";?> </td>
-                <td> <?php echo $typeTacosPanier->getPrixTaille().",00 €";?> </td>
+                <td> <div class="panier-cellule"> <?php echo $typeTacosPanier->getPrixTaille().",00 €";?> </div> </td>
+                <td> <div class="panier-cellule"> <?php echo $typeTacosPanier->getPrixTaille().",00 €";?> </div> </td>
                 <td> 
-                    <a class="lien-supprimer" href='index.php?page=deleteTacos&idTacos=<?php echo $tacosPanier->getIdTacos(); ?>'>
-                        <img class="icone-supprimer" src="images/general/poubelle.png">
-                    </a>
+                    <div class="panier-cellule">
+                        <a class="lien-supprimer" href='index.php?page=deleteTacos&idTacos=<?php echo $tacosPanier->getIdTacos(); ?>'>
+                            <img class="icone-supprimer" src="images/general/poubelle.png">
+                        </a>
+                    </div>
                 </td>
             </tr>
 <?php 
@@ -132,8 +134,8 @@
                 $quantiteViandePanier = TacosViandeManager::findQuantiteWithViandeAndTacos($idTacosPanier, $viandePanier->getIdViande());
 ?>  
                 <tr>
-                    <td> <?php echo "Viande ".$viandePanier->getNomViande(); ?> </td>
-                    <td> <?php echo $quantiteViandePanier; ?> </td>
+                    <td> <div class="panier-cellule"> <?php echo "Viande ".$viandePanier->getNomViande(); ?> </div> </td>
+                    <td> <div class="panier-cellule"> <?php echo $quantiteViandePanier; ?> </div> </td>
                     <td> </td>
                     <td> </td>
                     <td> </td>
@@ -148,8 +150,8 @@
                 $quantiteSaucePanier = TacosSauceManager::findQuantiteWithSauceAndTacos($idTacosPanier, $saucePanier->getIdSauce());
 ?>
                 <tr>
-                    <td> <?php echo "Sauce ".$saucePanier->getNomSauce();?> </td>
-                    <td> <?php echo $quantiteSaucePanier;?> </td>
+                    <td> <div class="panier-cellule"> <?php echo "Sauce ".$saucePanier->getNomSauce();?> </div> </td>
+                    <td> <div class="panier-cellule"> <?php echo $quantiteSaucePanier;?> </div> </td>
                     <td> </td>   
                     <td> </td>
                     <td> </td>
@@ -165,14 +167,16 @@
             $quantiteBoissonPanier = CommandeBoissonManager::findQuantiteWithCommandeAndBoisson($commandePanier->getIdCommande(), $boissonPanier->getIdBoisson());
 ?>
             <tr>
-                <td> <?php echo $boissonPanier->getNomBoisson();?> </td>
-                <td> <?php echo $quantiteBoissonPanier;?> </td>
-                <td> <?php echo $boissonPanier->getPrixBoisson().",00 €";?> </td>
-                <td> <?php echo $boissonPanier->getPrixBoisson()*$quantiteBoissonPanier.",00 €";?> </td>
+                <td> <div class="panier-cellule"><?php echo $boissonPanier->getNomBoisson();?> </div> </td>
+                <td> <div class="panier-cellule"><?php echo $quantiteBoissonPanier;?> </div> </td>
+                <td> <div class="panier-cellule"><?php echo $boissonPanier->getPrixBoisson().",00 €";?> </div> </td>
+                <td> <div class="panier-cellule"><?php echo $boissonPanier->getPrixBoisson()*$quantiteBoissonPanier.",00 €";?> </div> </td>
                 <td> 
-                    <a class="lien-supprimer" href='index.php?page=deleteBoisson&idBoisson=<?php echo $boissonPanier->getIdBoisson(); ?>'>
-                        <img class="icone-supprimer" src="images/general/poubelle.png">
-                    </a>
+                    <div class="panier-cellule">
+                        <a class="lien-supprimer" href='index.php?page=deleteBoisson&idBoisson=<?php echo $boissonPanier->getIdBoisson(); ?>'>
+                            <img class="icone-supprimer" src="images/general/poubelle.png">
+                        </a>
+                    </div>
                 </td>
             </tr>    
 <?php
@@ -184,11 +188,11 @@
 ?>
                 
             <tr>
-                <td> </td>
-                <td> </td>
-                <td> </td>
-                <td> <?php echo $prixCommande.",00 €"; ?></td>
-                <td> </td>
+                <td class="panier-ligne-total"> </td>
+                <td class="panier-ligne-total"> </td>
+                <td class="panier-ligne-total"> <div class="panier-cellule"> <?php echo "Total :";?></div> </td>
+                <td class="panier-ligne-total"> <div class="panier-cellule"> <?php echo $prixCommande.",00 €"; ?> </div> </td>
+                <td class="panier-ligne-total"> </td>
             </tr>       
                 
 </table>

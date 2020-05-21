@@ -44,7 +44,13 @@
                 <a class="menu-link" href="index.php?page=accueil">
                     Infos
                 </a>
-                <a class="menu-link" href="index.php?page=panier">
+                <a class="menu-link" id="menu-panier-container" href="index.php?page=panier">
+                    <?php 
+                    if(isset($_SESSION["prixTotal"]))
+                    {
+                        echo $_SESSION["prixTotal"].",00 €";
+                    }
+                    ?>
                     <img class="menu-icone" src="images/general/panier.png"/>
                 </a>
             </div>

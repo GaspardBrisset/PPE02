@@ -79,16 +79,23 @@ th
     letter-spacing: 2px;
     padding: 5px;
     text-transform: uppercase;
+    color: black;
+    font-weight: normal;
+    background-color: #FFF1DD;
 
 }
 
 td
 {
-    border: thin solid black;
+    border-left: thin solid black;
     padding: 5px;
-
     justify-content: center;
 
+}
+
+tr
+{
+    border-top: thin solid black;
 }
 
 .button-container-ajout
@@ -99,4 +106,19 @@ td
     justify-content: space-between;
     width: 60%;
    
+}
+
+.panier-cellule
+{
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    align-items: center;
+    border: white;
+}
+
+.panier-ligne-total
+{
+    border-left: thin solid white;
+    
 }
